@@ -17,22 +17,22 @@ function CardMain({ imgSrc, title, hearts }) {
       <div className="stat">
         <div>
           <p>
-            Current Bid<span>1.2 ETH</span>
+            Price<span>1200 $</span>
           </p>
         </div>
         <div>
           <p>
-            Ending In<span>1d:12h:10m</span>
+          Purchase <span>Now</span>
           </p>
         </div>
       </div>
 
       <div className="card_main_button">
         <a href="#" className="button btn">
-          Place a Bid
+          Details
         </a>
         <a href="#" className="button2 btn">
-          History
+          Features  
         </a>
       </div>
     </div>
