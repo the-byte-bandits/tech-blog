@@ -2,6 +2,13 @@ import React, { useEffect } from "react";
 import "./Menu.css";
 import logo from "../img/logo.png";
 import {
+    AiOutlineStar
+}from "react-icons/ai"
+import {
+    BiSolidCategoryAlt,
+    BiCommentDetail
+} from "react-icons/bi"
+import {
   FaDelicious,
   FaShoppingCart,
   FaWallet,
@@ -9,7 +16,8 @@ import {
   FaRegClock,
   FaCog,
   FaSignOutAlt,
-  FaBloggerB
+  FaBloggerB,
+  
 } from "react-icons/fa";
 
 function Menu() {
@@ -31,11 +39,11 @@ function Menu() {
       <img src={logo} alt="" />
 
       <ul id="mainMenu">
-        <Icon icon={<FaBloggerB />} />
-        <Icon icon={<FaShoppingCart />} />
+        <Icon icon={<FaBloggerB />} />  
+        <Icon icon={<BiSolidCategoryAlt />} />
         <Icon icon={<FaWallet />} />
-        <Icon icon={<FaChartLine />} />
-        <Icon icon={<FaRegClock />} />
+        <Icon icon={<BiCommentDetail />} />
+        <Icon icon={<AiOutlineStar />} />
       </ul>
 
       <ul className="lastMenu">
