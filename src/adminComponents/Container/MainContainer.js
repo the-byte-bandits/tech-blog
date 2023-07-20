@@ -62,12 +62,19 @@ function MainContainer() {
           </div>
 
           <main>
-            <CardMain imgSrc={Card1} title={"Cubic Thunder"} hearts={"65"} />
-            <CardMain imgSrc={Card2} title={"Pokemon Ball"} hearts={"65"} />
-            <CardMain imgSrc={Card3} title={"Pyramid God"} hearts={"65"} />
-            <CardMain imgSrc={Card4} title={"Stunning Cube"} hearts={"65"} />
-            <CardMain imgSrc={Card5} title={"Start Crystal"} hearts={"65"} />
-            <CardMain imgSrc={Card6} title={"Crystal Bird"} hearts={"65"} />
+            <CardMain imgSrc={Card1} title={"HP Elite Dragonfly G3"} hearts={"65"} />
+            <CardMain imgSrc={Card2} title={"HP Spectre x360"} hearts={"65"} />
+            <CardMain imgSrc={Card3} title={"HP Victus 16"} hearts={"65"} />
+            <CardMain imgSrc={Card4} title={"HP Pavilion"} hearts={"65"} />
+            <CardMain imgSrc={Card5} title={"HP Chromebook x360"} hearts={"65"} />
+            <CardMain imgSrc={Card6} title={"HP Crystal"} hearts={"65"} />
+            <CardMain imgSrc={Card1} title={"HP Elite Dragonfly G3"} hearts={"65"} />
+            <CardMain imgSrc={Card2} title={"HP Spectre x360"} hearts={"65"} />
+            <CardMain imgSrc={Card3} title={"HP Victus 16"} hearts={"65"} />
+            <CardMain imgSrc={Card4} title={"HP Pavilion"} hearts={"65"} />
+            <CardMain imgSrc={Card5} title={"HP Chromebook x360"} hearts={"65"} />
+            <CardMain imgSrc={Card6} title={"HP Crystal"} hearts={"65"} />
+            
           </main>
         </div>
       </div>
