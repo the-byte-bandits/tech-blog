@@ -34,17 +34,17 @@ function TopContainer() {
         <div className="profileImage">
           <img src={women} alt="" />
         </div>
-        <p className="profileName">Olivia Christine</p>
+        <p className="profileName">Admin</p>
         <i className="menuChevron" id="menuChevron">
           <FaChevronDown />
         </i>
 
         <div className="menuContainer" id="menuContainer">
           <ul>
-            <li>Web design</li>
-            <li>UI / UX</li>
-            <li>Form Design</li>
-            <li>UI design</li>
+            <li>Write Blog</li>
+            <li>Edit Blog</li>
+            <li>Delete Blog</li>
+            <li>Update Blog</li>
           </ul>
         </div>
       </div>

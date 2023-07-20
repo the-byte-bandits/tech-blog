@@ -43,7 +43,7 @@
   }
   
   .maincontainer .left .banner .textContainer p {
-    color: #f1f1f1;
+    color: #e2d0d0;
     font-size: 18px;
     margin: 5px 0;
   }
@@ -64,7 +64,7 @@
   }
   
   .maincontainer .left .cards {
-    background: #19162c;
+    background: #d4d4ff;
     padding: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
     margin-top: 20px;

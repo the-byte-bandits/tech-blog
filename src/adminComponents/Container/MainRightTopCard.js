@@ -10,23 +10,23 @@ function MainRightTopCard() {
 
       <div className="earning">
         <p>
-          Artwork Sold <span>187</span>
+          New Laptops <span>187</span>
         </p>
 
         <p>
-          Artwork Canceled <span>5</span>
+          Trending <span>5</span>
         </p>
 
         <p>
-          Artwork Pending <span>25</span>
+          Popular <span>25</span>
         </p>
 
         <p>
-          Artwork Delivered <span>200</span>
+          Buisness <span>200</span>
         </p>
 
         <p>
-          Total Earning <span>262 ETH</span>
+          Gaming <span>262</span>
         </p>
       </div>
     </div>

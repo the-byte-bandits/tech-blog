@@ -5,7 +5,7 @@ function MainRightBottomCard() {
   return (
     <div className="bottom_card">
       <div className="bottomCard_name">
-        <h2>Top Seller</h2>
+        <h2>Top Contributors</h2>
         <a href="#">View More</a>
       </div>
 
