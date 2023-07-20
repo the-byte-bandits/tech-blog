@@ -26,16 +26,11 @@ function MainContainer() {
           }}
         >
           <div className="textContainer">
-            <h1>Round Hall</h1>
-            <h2>1.5 ETH</h2>
-            <p>Uploaded by Alexander Vernof</p>
+            <h1>Admin DashBoard</h1>
+            <h2>Tech Blogs</h2>
+            <span><a>Explore Blogs</a></span>
             <div className="bid">
-              <a href="#" className="button">
-                Bid Now
-              </a>
-              <p>
-                Ending In <span>2d:15h:20m</span>
-              </p>
+              
             </div>
           </div>
         </div>
@@ -43,25 +38,27 @@ function MainContainer() {
         <div className="cards">
           <div className="filters">
             <div className="popular">
-              <h2>Feed</h2>
-              <a href="#" className="button2">
+              <h2>Blogs</h2>
+            
+            </div>
+            <a href="#" className="button2">
                 Popular
               </a>
-            </div>
-            <div className="filter_buttons">
+            
+            {/* <div className="filter_buttons">
               <a href="#" className="button">
-                All
+                Cat-1
               </a>
               <a href="#" className="button2">
-                Illustration
+              Cat-2
               </a>
               <a href="#" className="button2">
-                Art
-              </a>
+              Cat-3
+                              </a>
               <a href="#" className="button2">
-                Games
+              Cat-4
               </a>
-            </div>
+            </div> */}
           </div>
 
           <main>
