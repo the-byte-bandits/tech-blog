@@ -1,24 +1,9 @@
 import React, { useEffect } from "react";
 import "./Menu.css";
-import logo from "../img/logo.png";
-import {
-    AiOutlineStar
-}from "react-icons/ai"
-import {
-    BiSolidCategoryAlt,
-    BiCommentDetail
-} from "react-icons/bi"
-import {
-  FaDelicious,
-  FaShoppingCart,
-  FaWallet,
-  FaChartLine,
-  FaRegClock,
-  FaCog,
-  FaSignOutAlt,
-  FaBloggerB,
-  
-} from "react-icons/fa";
+import logo from "../../img/logo.png";
+import { AiOutlineStar } from "react-icons/ai";
+import { BiSolidCategoryAlt, BiCommentDetail } from "react-icons/bi";
+import { FaWallet, FaCog, FaSignOutAlt, FaBloggerB } from "react-icons/fa";
 
 function Menu() {
   useEffect(() => {
@@ -39,7 +24,7 @@ function Menu() {
       <img src={logo} alt="" />
 
       <ul id="mainMenu">
-        <Icon icon={<FaBloggerB />} />  
+        <Icon icon={<FaBloggerB />} />
         <Icon icon={<BiSolidCategoryAlt />} />
         <Icon icon={<FaWallet />} />
         <Icon icon={<BiCommentDetail />} />
