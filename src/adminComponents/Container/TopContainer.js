@@ -3,6 +3,8 @@ import { BiSearchAlt } from "react-icons/bi";
 import { FaBell, FaChevronDown } from "react-icons/fa";
 import women from "../../img/women.jpg";
 
+
+
 function TopContainer() {
   useEffect(() => {
     const mouseTarget = document.getElementById("menuChevron");
@@ -41,10 +43,10 @@ function TopContainer() {
 
         <div className="menuContainer" id="menuContainer">
           <ul>
-            <li>Write Blog</li>
-            <li>Edit Blog</li>
-            <li>Delete Blog</li>
-            <li>Update Blog</li>
+            <li>Sign In</li>
+            <li>Sign Up</li>
+            <li>Forgot Password</li>
+            
           </ul>
         </div>
       </div>

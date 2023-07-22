@@ -20,7 +20,7 @@ function MainRightBottomCard() {
                 {seller?.seller_name} <span>{seller?.username}</span>
               </p>
             </div>
-            <a href="#" className="button">
+            <a href="#" className="button atag">
               Follow
             </a>
           </div>

@@ -32,7 +32,7 @@ function CardMain({ imgSrc, title, hearts }) {
           Details
         </a>
         <a href="#" className="button2 btn">
-          Features  
+          Explore More    
         </a>
       </div>
     </div>

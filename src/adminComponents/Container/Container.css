@@ -28,6 +28,9 @@
     font-size: 16px;
     border-radius: 6px;
   }
+  .button2{
+    color: rgb(0, 0, 0);
+  }
   
   .topContainer .inputBox input::placeholder {
     color: #757380;

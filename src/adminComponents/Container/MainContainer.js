@@ -62,17 +62,11 @@ function MainContainer() {
           </div>
 
           <main>
-            <CardMain imgSrc={Card1} title={"HP Elite Dragonfly G3"} hearts={"65"} />
+            <CardMain imgSrc={Card1} title={"HP EliteBook"} hearts={"65"} />
             <CardMain imgSrc={Card2} title={"HP Spectre x360"} hearts={"65"} />
             <CardMain imgSrc={Card3} title={"HP Victus 16"} hearts={"65"} />
             <CardMain imgSrc={Card4} title={"HP Pavilion"} hearts={"65"} />
-            <CardMain imgSrc={Card5} title={"HP Chromebook x360"} hearts={"65"} />
-            <CardMain imgSrc={Card6} title={"HP Crystal"} hearts={"65"} />
-            <CardMain imgSrc={Card1} title={"HP Elite Dragonfly G3"} hearts={"65"} />
-            <CardMain imgSrc={Card2} title={"HP Spectre x360"} hearts={"65"} />
-            <CardMain imgSrc={Card3} title={"HP Victus 16"} hearts={"65"} />
-            <CardMain imgSrc={Card4} title={"HP Pavilion"} hearts={"65"} />
-            <CardMain imgSrc={Card5} title={"HP Chromebook x360"} hearts={"65"} />
+            <CardMain imgSrc={Card5} title={"HP Chromebook"} hearts={"65"} />
             <CardMain imgSrc={Card6} title={"HP Crystal"} hearts={"65"} />
             
           </main>
