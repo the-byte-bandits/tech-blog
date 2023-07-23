@@ -1,5 +1,6 @@
 import React from 'react'
 import './BlogPage.css'
+import CommentsSection from './CommentsSection'
 
 export default function BlogPage() {
   return (
@@ -36,6 +37,9 @@ export default function BlogPage() {
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique ea minima, autem explicabo enim tempora doloribus corporis quasi reiciendis illo quas sed velit voluptas? Eligendi ullam earum omnis unde maxime.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa odio itaque sapiente ratione, quos ea id. Maxime exercitationem, deleniti eveniet aspernatur in at nobis, officiis aliquid beatae expedita nesciunt natus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, enim facilis! Error deleniti, accusamus est, distinctio beatae earum molestiae itaque ipsam eius neque odio? Enim, optio? Mollitia, itaque excepturi? Deleniti! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis incidunt voluptatibus aliquid rerum, perspiciatis optio labore odit. Provident maiores, dolorum voluptatem deleniti quia amet vel mollitia temporibus ab pariatur ratione?</p>
             </div>
         </div>
+
+
+        <CommentsSection />
     </div>
   )
 }

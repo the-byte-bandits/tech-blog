@@ -1,37 +1,3 @@
-/* // Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) {
-
-}
-
-/* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-
-}
-
-/* // Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-
-}
-
-/* // Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-
-}
-
-/* // X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-
-}
-
-/* // XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
-
-}
-
-
-
-
-
 .blog-page{
 
     /* width: 100vw; */
@@ -148,3 +114,66 @@
     transform: translateX(-50%); 
     margin: 2rem 0;
   }
+
+
+
+
+@media (max-width: 576px) {
+    .blog-page-container{
+        width: 90%;
+
+
+        /* border: 1px solid red; */
+    }
+
+    .blog-page-upper{
+        width: 90%;
+    }
+
+    .blog-page-middle{
+        width: 100%;
+    }
+
+    .blog-page-bottom{
+        width: 100%;
+    }
+}
+
+@media (min-width:577px) and (max-width: 768px) {
+    .blog-page-container{
+        width: 90%;
+
+
+        /* border: 1px solid red; */
+    }
+
+    .blog-page-upper{
+        width: 80%;
+    }
+
+    .blog-page-middle{
+        width: 100%;
+    }
+
+    .blog-page-bottom{
+        width: 100%;
+    }
+}
+
+@media (min-width:769px) and (max-width: 992px) {
+    .blog-page-container{
+        width: 90%;
+    }
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 1400px) {
+
+}
+
+@media (min-width: 1401px) {
+
+}

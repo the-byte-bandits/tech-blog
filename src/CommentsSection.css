@@ -1,0 +1,68 @@
+.comments-section{
+
+    /* border: 1px solid red; */
+}
+
+.comments-section-container{
+    width: 80%;
+    margin: 0 auto;
+
+    /* border: 1px solid red; */
+
+}
+
+.comments-section-container>h1{
+    font-size: 1.5rem;
+    margin: 2rem 0;
+}
+
+.add-comment{
+    display: flex;
+    align-items: center;
+    width: 70%;
+    margin: 0 auto 2rem;
+
+    /* flex-direction: row; */
+    /* border: 1px solid red; */
+}
+
+.add-comment>img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.add-comment>form{
+    width: 100%;   
+    display: flex;
+
+    /* border: 1px solid red; */
+
+}
+
+.add-comment>form>input{
+    /* width: 100%; */
+    flex:1;
+    height: 50px;
+    padding: .5rem;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.add-comment>form>button{
+    /* flex: 1; */
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    margin-left: .5rem;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .add-comment{
+        width: 100%;
+    }
+}
