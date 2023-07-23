@@ -5,19 +5,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Container from './adminComponents/Container/Container';
 import Menu from './adminComponents/SideMenu/Menu';
-
+import AboutUs from './About';
+import ContactUs from './ContactUs';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 
 function App() {
   return (
     <div className="app">
 
-      <Menu/>
-      <Container/>
-
+      <Navbar />
+        {/* <BlogPage /> */}
+      {/* <Footer /> */}
+      
       {/* <MainBlog /> */}
-      <BlogPage />
 
+      {/* <Menu/> */}
+      {/* <Container/> */}
+
+      {/* <AboutUs /> */}
+      {/* <ContactUs /> */}
     </div>
   );
 }

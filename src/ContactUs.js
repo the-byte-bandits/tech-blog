@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css";
+import "./About.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 

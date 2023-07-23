@@ -1,47 +1,6 @@
-// import React from 'react';
-// import { Container, Row, Col } from 'react-bootstrap';
-// import '../App.css'; // Import the custom CSS file
-
-// const AboutUs = () => {
-//   return (
-//     <div className="about-us">
-//       <Container>
-//         <Row className="justify-content-center">
-//           <Col md={8} className="about-content">
-//             <h1 className="text-center mb-5">About Us</h1>
-//             <p>
-//               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu urna eget sem iaculis
-//               vehicula eu in ipsum. Fusce tempus lacus vel ante fermentum, quis posuere libero
-//               malesuada. In vel mi nec odio iaculis gravida quis sit amet mauris. Duis rhoncus
-//               laoreet tempor.
-//             </p>
-//             <p>
-//               Sed interdum felis eget quam tincidunt, at interdum tortor efficitur. Sed eget lorem
-//               quis urna iaculis pulvinar. Sed a consectetur quam, et laoreet purus. Aenean gravida
-//               ullamcorper nisl, nec consectetur turpis faucibus non. Proin id mauris id tortor
-//               convallis dapibus nec sit amet nisi.
-//             </p>
-//             <p>
-//               Phasellus id leo vitae orci lacinia elementum. Integer eu convallis purus. In hac
-//               habitasse platea dictumst. Quisque facilisis tortor felis, eu posuere orci sagittis a.
-//               Maecenas rhoncus scelerisque mi, et dictum quam. Nullam eget blandit arcu.
-//             </p>
-//           </Col>
-//         </Row>
-//       </Container>
-//     </div>
-//   );
-// };
-
-// export default AboutUs;
-
-
-
-// AboutUs.js
-
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import '../App.css'; // Import the custom CSS file
+import './About.css'; // Import the custom CSS file
 
 const AboutUs = () => {
   return (
