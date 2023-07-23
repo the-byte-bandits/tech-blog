@@ -1,0 +1,150 @@
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+
+}
+
+
+
+
+
+.blog-page{
+
+    /* width: 100vw; */
+
+    /* border: 1px solid red; */
+}
+
+.blog-page-container{
+    width: 80%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* border: 1px solid red; */
+
+}
+
+.blog-page-upper{
+    width: 70%;
+    margin:2rem 0;
+
+    /* border: 1px solid red; */
+
+}
+
+.blog-page-upper>p,.blog-page-upper>h1{
+    margin: 1rem 0;
+
+    /* color: red; */
+}
+
+.blog-page-upper>p:nth-child(1){
+    font-weight: bold;
+}
+
+.blog-page-upper>div{
+    margin: .5rem 0;
+    /* border: 1px solid black; */
+}
+
+.blog-page-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.blog-page-info>p:nth-child(1){
+    display: flex;
+    
+}
+
+.blog-page-info>p:nth-child(1)>section{
+    text-decoration: underline;
+    
+}
+
+.blog-page-info>p:nth-child(2){
+    /* color: rgb(182, 177, 177); */
+    
+}
+/* .blog-page-upper>p:nth-child(4){
+    display: flex;
+}
+
+.blog-page-upper>p:nth-child(4)>section{
+    text-decoration: underline;
+} */
+
+.blog-page-btn{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.blog-page-btn>div>i{
+    margin-right: .5rem;
+    border: 1px solid rgb(182, 177, 177);
+    /* border: 1px solid black; */
+    padding: .5rem;
+    border-radius: 50%;
+}
+
+.blog-page-middle{
+    width: 85%;
+    margin: 2rem 0;
+
+    /* border: 1px solid red; */
+
+}
+
+.blog-page-middle>img{
+    width: 100%;
+    border-radius: 2rem;
+}
+
+.blog-page-bottom{
+    margin: 0rem 0 2rem;
+    width: 85%;
+}
+
+.blog-page-bottom>p{
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.blog-page-bottom::after {
+    content: "";
+    display: block;
+    border-bottom: 2px solid rgb(182, 177, 177);
+    width: 200px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); 
+    margin: 2rem 0;
+  }
