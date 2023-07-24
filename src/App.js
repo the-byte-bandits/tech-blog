@@ -14,6 +14,7 @@ import Login from './Login';
 import Register from './Register';
 import BlogEditor from './BlogEditor';
 import Footer from './Footer';
+import ScrollToTop from './ScrollToTop';
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
     <div className="app">
       <Router>
         <Navbarr />
+
+        <ScrollToTop />
+
         <Routes>
           <Route path='/' element={<MainBlog />} />
           <Route path='/blog' element={<BlogPage />} />

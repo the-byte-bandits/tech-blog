@@ -122,8 +122,10 @@
     align-items: center;
 }
 
+
+
 .blogs-all-container>button{
-    margin: -2rem 0 0;
+    margin: -1rem 0 0;
     /* width: 100px; */
     padding: 1rem 1.5rem;
     border-radius: 1rem;
