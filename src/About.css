@@ -1,5 +1,7 @@
 /* AboutUs.css */
-
+.about-us-container{
+  margin-top: 5rem !important;
+}
 /* Main container */
 .about-us {
     background-color: #ffffff;
@@ -35,14 +37,14 @@
     text-align: left;
   }
   
-  h1 {
+  .about-text>h1 {
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 36px;
     margin-bottom: 20px;
     color: #333;
   }
   
-  p {
+  .about-text>p {
     font-family: 'Arial', sans-serif;
     font-size: 16px;
     line-height: 1.6;

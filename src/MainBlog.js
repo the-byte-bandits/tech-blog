@@ -26,29 +26,18 @@ export default function MainBlog() {
                 <Blog />
                 <Blog />
                 <Blog />
-                <Blog />
 
+                <Blog />
+                <Blog />
+                <Blog />
+                
+                <Blog />
+                <Blog />
+                <Blog />
               </div>
-              {/* <div className="blogs-all-col row">
-                <Blog />
-                <Blog />
-                <Blog />
-                <Blog />
-
-              </div>
-              <div className="blogs-all-col row">
-                <Blog />
-                <Blog />
-                <Blog />
-                <Blog />
-
-              </div> */}
-
               {/* <div className="ad-1"><p>Ads*</p></div> */}
 
-             
-
-
+              <button>Load More</button>
             </div>
           </div>
         </div>

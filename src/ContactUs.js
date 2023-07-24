@@ -6,7 +6,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 const App = () => {
   return (
     <>
-      <div className="container">
+      <div className="container about-us-container">
         <div className="row">
           <div className="col-md-4">
             <div className="contact-info">
