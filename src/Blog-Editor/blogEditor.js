@@ -1,16 +1,13 @@
-import React from 'react'
-
-import { useState, useRef, useMemo } from "react";
+import React, { useState, useRef } from "react";
 import JoditEditor from "jodit-react";
 import HTMLReactParser from "html-react-parser";
 
-export default function blogEditor() {
-    const editor = useRef(null);
-    const [content, setContent] = useState("");
-  
-    return (
+export default function BlogEditor() {
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
+
+  return (
     <div>
-      
       <JoditEditor
         ref={editor}
         value={content}
@@ -18,7 +15,6 @@ export default function blogEditor() {
       />
 
       <div>{HTMLReactParser(content)}</div>
-
     </div>
-  )
+  );
 }
