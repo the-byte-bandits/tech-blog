@@ -10,6 +10,8 @@ import MainBlog from './MainBlog';
 import BlogPage from './BlogPage';
 import Navbarr from './Navbarr';
 import './App.css';
+import Login from './Login';
+import Register from './Register';
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
           <Route path='/blog' element={<BlogPage />} />
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/about' element={<AboutUs />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
           <Route path='/dashboard' element={<div className="dashboard"><Menu/><Container/></div>} />
         </Routes>
       </Router>
