@@ -8,7 +8,7 @@
     padding: 40px;
     margin: 20px auto;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
+    /* box-shadow: 0 0 10px rgb(0, 0, 0); */
   }
   
   /* Center the content vertically and horizontally */

@@ -12,12 +12,13 @@ import Navbarr from './Navbarr';
 import './App.css';
 import Login from './Login';
 import Register from './Register';
+import BlogEditor from './BlogEditor';
+import Footer from './Footer';
 
 
 function App() {
   return (
     <div className="app">
-
       <Router>
         <Navbarr />
         <Routes>
@@ -27,10 +28,11 @@ function App() {
           <Route path='/about' element={<AboutUs />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/blogeditor' element={<BlogEditor />} />
           <Route path='/dashboard' element={<div className="dashboard"><Menu/><Container/></div>} />
         </Routes>
+        <Footer />
       </Router>
-
     </div>
   );
 }
