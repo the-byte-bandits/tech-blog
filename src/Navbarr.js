@@ -16,8 +16,9 @@ function Navbarr() {
               </div>
             </Link>
               <ul>
-                  <li><Link to='/contact'>Contact</Link></li>
-                  <li><Link to='/about'>About</Link></li>
+                  <li><Link to='/contact-us'>Contact</Link></li>
+                  <li><Link to='/about-us'>About</Link></li>
+                  <li><Link to='/terms-of-service'>Terms</Link></li>
                   {/* <li className='navbar-admin'>Admin</li> */}
               </ul>
           </div>

@@ -1,34 +1,3 @@
-// import React from 'react';
-// import { Container, Row, Col } from 'react-bootstrap';
-// // import './TermsOfService.css';
-
-// const TermsOfService = () => {
-//   return (
-//     <Container fluid className="terms-container">
-//       <Row>
-//         <Col>
-//           <h1 className="terms-title">Terms of Service</h1>
-//           <p className="terms-paragraph">
-//             These terms and conditions outline the rules and regulations for the use of our service.
-//           </p>
-//           <h2 className="terms-title">Cookies</h2>
-//           <p className="terms-paragraph">
-//             We employ the use of cookies. By accessing our service, you agreed to use cookies in agreement with our Privacy Policy.
-//           </p>
-//           <h2 className="terms-title">License</h2>
-//           <p className="terms-paragraph">
-//             Unless otherwise stated, we own the intellectual property rights for all material on our service. All intellectual property rights are reserved.
-//           </p>
-//           {/* Add more terms as required */}
-//         </Col>
-//       </Row>
-//     </Container>
-//   );
-// };
-
-// export default TermsOfService;
-
-
 import React from 'react';
 import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TermsOfService = () => {
   return (
-    <Container fluid className="p-5">
+    <Container fluid className="p-5 correction">
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
           <Card border="secondary" className="p-3">

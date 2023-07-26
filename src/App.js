@@ -15,27 +15,31 @@ import BlogEditor from './BlogEditor';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import Dashboard from './Dashboard';
+import TermsOfService from './TermsOfService';
 
 
 function App() {
   return (
     <div className="app">
+      
+      
       <Router>
         <Navbarr />
         <ScrollToTop />
         <Routes>
           <Route path='/' element={<MainBlog />} />
           <Route path='/blog' element={<BlogPage />} />
-          <Route path='/contact' element={<ContactUs />} />
-          <Route path='/about' element={<AboutUs />} />
+          <Route path='/contact-us' element={<ContactUs />} />
+          <Route path='/about-us' element={<AboutUs />} />
+          <Route path='/terms-of-service' element={<TermsOfService />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/blogeditor' element={<BlogEditor />} />
           <Route path='/dashboard' element={<Dashboard />} />
-          {/* <Route path='/dashboard' element={<div className="dashboard"><Menu/><Container/></div>} /> */}
         </Routes>
         <Footer />
       </Router>
+          {/* <Route path='/dashboard' element={<div className="dashboard"><Menu/><Container/></div>} /> */}
     </div>
   );
 }
