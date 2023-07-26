@@ -52,6 +52,7 @@
 
 .blog-page-info>p:nth-child(1)>section{
     text-decoration: underline;
+    padding: 0 !important;
     
 }
 

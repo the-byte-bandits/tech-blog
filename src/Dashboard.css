@@ -1,0 +1,193 @@
+.admin-dashboard{
+
+}
+
+.admin-dashboard-container{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+
+    /* border: px solid red; */
+}
+
+.admin-info{
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    /* background-color: #f3f5f7; */
+    /* border: 1px solid #cccccc; */
+    border-radius: 1rem;
+    margin: 2rem 0;
+    /* width: auto; */
+
+    /* border: 1px solid red; */
+}
+
+.admin-info-left{
+    /* width: 30%; */
+    margin-right: 2rem;
+
+    /* border: 1px solid red; */
+}
+
+.admin-info-left>img{
+    height: 150px;
+    border-radius: 1rem;
+    /* box-shadow: 0 0 1rem black; */
+}
+
+.admin-info-right{
+
+    /* border: 1px solid red; */
+}
+
+.admin-info-right>p,.admin-info-right>h1{
+    margin: 0 0 .5rem;
+}
+
+.admin-info-right>p:nth-child(1){
+    background-color: black;
+    display: inline-block;
+    color: white;
+    padding: .5rem;
+    border-radius: .5rem;
+    font-weight: bold;
+}
+
+.admin-info-right>h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.admin-info-right>p:nth-child(3){
+    display: flex;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.admin-info-right>p>section{
+    padding: 0;
+    margin-left: .5rem;
+    font-weight: 400;
+}
+
+.admin-info-right>button{
+    padding: .5rem 1rem;
+    font-weight: bold;
+    border-radius: .5rem;
+    border: none;
+    background-color: black;
+    color: white;
+    width: 100%;
+}
+
+
+.admin-table{
+    /* width: 70%; */
+    /* border: 1px solid red; */
+}
+
+.admin-table-container{
+    /* border: 1px solid #cccccc; */
+    /* padding: 2rem; */
+    /* box-sizing: border-box; */
+    /* border-radius: 2rem; */
+
+
+    
+    /* border: 1px solid red; */
+}
+
+.admin-table-container>div{
+    display: flex;
+    justify-content: space-between;
+    /* margin: 0 0 2rem; */
+    /* border-bottom: 1px solid #cccccc; */
+    padding-bottom: 1rem;
+}
+
+.admin-table-container>div>h1{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.admin-table-container>div>button{
+    padding: .5rem 1rem;
+    font-weight: bold;
+    border-radius: .5rem;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.admin-table-container>.admin-table-wrapper>table{
+    /* margin-top: 2rem; */
+    width: 100%;
+    /* border: 1px solid #cccccc; */
+    /* border-radius: 1rem; */
+
+    /* border: 1px solid red; */
+
+}
+
+.admin-table-wrapper{
+    border: 1px solid #cccccc;
+    border-radius: 1rem;
+
+    padding-bottom: 0 !important;
+}
+
+table>tr{
+    /* padding: 2rem 0 !important; */
+    border: 1px solid #cccccc;
+    border-left: none;
+    border-right: none;
+}
+
+table>tr:nth-child(1){
+    border-top: none;
+}
+
+table>tr:last-child{
+    border-bottom: none;
+}
+
+table>tr>th{
+    box-sizing: border-box;
+    padding: 1rem;
+    /* text-align: center; */
+
+}
+
+table>tr>td{
+    box-sizing: border-box;
+    padding: .5rem 1rem;
+    /* text-align: right; */
+    /* border: 1px solid red; */
+}
+
+table>tr>td>a{
+    color: black;
+    text-decoration: none;
+}
+
+table>tr>td>a:hover{
+    text-decoration: underline;
+}
+
+table>tr>td>button{
+    border: none;
+    background-color: black;
+    color: white;
+    margin: 0 .5rem 0 0;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    font-size: .8rem;
+}
+
+table>tr>td>button:last-child{
+    background-color: red;
+}

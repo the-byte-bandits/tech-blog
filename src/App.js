@@ -1,6 +1,5 @@
 import 'https://kit.fontawesome.com/9c1c3f6a2e.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Container from './adminComponents/Container/Container';
 import Menu from './adminComponents/SideMenu/Menu';
 import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
@@ -15,6 +14,7 @@ import Register from './Register';
 import BlogEditor from './BlogEditor';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
+import Dashboard from './Dashboard';
 
 
 function App() {
@@ -22,9 +22,7 @@ function App() {
     <div className="app">
       <Router>
         <Navbarr />
-
         <ScrollToTop />
-
         <Routes>
           <Route path='/' element={<MainBlog />} />
           <Route path='/blog' element={<BlogPage />} />
@@ -33,7 +31,8 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/blogeditor' element={<BlogEditor />} />
-          <Route path='/dashboard' element={<div className="dashboard"><Menu/><Container/></div>} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          {/* <Route path='/dashboard' element={<div className="dashboard"><Menu/><Container/></div>} /> */}
         </Routes>
         <Footer />
       </Router>
