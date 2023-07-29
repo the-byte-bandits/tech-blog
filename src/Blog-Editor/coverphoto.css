@@ -1,0 +1,12 @@
+.maincoverphoto {
+    display: flex;
+    margin: auto;
+    width: 400px; /* Add the appropriate unit, like 'px' */
+    flex-wrap: wrap; /* Use hyphens instead of camelCase for flex-wrap */
+  }
+  
+  .coverheading {
+    width: 100%;
+    float: left;
+  }
+  
