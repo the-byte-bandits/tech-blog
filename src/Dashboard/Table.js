@@ -1,117 +1,136 @@
 import React from 'react'
 import './Table.css'
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
+import slugify from 'slugify';
 
-export default function Table() {
+
+export default function Table({id,th,td}) {
+
+    const disclaimerToDeleteBlog=()=>{
+        Swal.fire({
+            title: 'Do you want to proceed?',
+            showCancelButton: true,
+            confirmButtonText: '✓', // Tick button
+            cancelButtonText: '✗', // Cross button
+            confirmButtonColor: '#38a169', // Custom color for tick button
+            cancelButtonColor: '#e53e3e', // Custom color for cross button
+        }).then((result) => {
+            if (result.isConfirmed) {
+            // Code to execute if the tick button is clicked
+            console.log('Tick button clicked!');
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+            // Code to execute if the cross button is clicked
+            console.log('Cross button clicked!');
+            }
+        });
+    }
+
+    const disclaimerToDeleteComm=()=>{
+        Swal.fire({
+            title: 'Do you want to proceed?',
+            showCancelButton: true,
+            confirmButtonText: '✓', // Tick button
+            cancelButtonText: '✗', // Cross button
+            confirmButtonColor: '#38a169', // Custom color for tick button
+            cancelButtonColor: '#e53e3e', // Custom color for cross button
+        }).then((result) => {
+            if (result.isConfirmed) {
+            // Code to execute if the tick button is clicked
+            console.log('Tick button clicked!');
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+            // Code to execute if the cross button is clicked
+            console.log('Cross button clicked!');
+            }
+        });
+    }
+
+    const showFullComment = (text) => {
+        Swal.fire({
+          title: 'Comment',
+          text: text,
+          icon: 'info',
+          confirmButtonText: 'OK'
+        });
+      };
+
   return (
     <div className="dash-table">
         <div className="dash-table-container">
-            <div>
-                <h1>All Blogs</h1>
-                <button><i class="fa-solid fa-plus"></i> Add Blog</button>
-            </div>
-            <div className="dash-table-wrapper">
-                
+            {
+                id === 'dashboard' &&
+                <div>
+                    <h1>All Blogs</h1>
+                    <Link to='/write-blog' ><i class="fa-solid fa-plus"></i> Add Blog</Link>
+                </div>
+            }
+            {
+                id === 'all-comments' &&
+                <div>
+                    <h1>All Comments</h1>
+                </div>
+            }
+            {
+                id === 'pending-comments' &&
+                <div>
+                    <h1>Pending Comments</h1>
+                </div>
+            }
+            <div className="dash-table-wrapper">                
                 <table>
                     <tr>
-                        <th>Sr #</th>
-                        <th>Title</th>                            
-                        <th>Category</th>                            
-                        <th>Likes</th>                            
-                        <th>Comments</th>     
-                        <th>Tot. Views</th>                       
-                        <th>Curr. Views</th>                       
-                        <th>Date</th>                            
-                        <th>Actions</th> 
+                        {th.map((item)=><th>{item}</th>)}
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td className='table-blog-title'><a href="">Lorem ipsum do...</a></td>
-                        <td>Programming</td>
-                        <td>23</td>
-                        <td className='table-blog-comm'><a href="">11</a></td>
-                        <td>123</td>
-                        <td>43</td>
-                        <td>12/12/2021</td>
-                        <td><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td className='table-blog-title'><a href="">Lorem ipsum do...</a></td>
-                        <td>Programming</td>
-                        <td>23</td>
-                        <td className='table-blog-comm'><a href="">11</a></td>
-                        <td>123</td>
-                        <td>43</td>
-                        <td>12/12/2021</td>
-                        <td><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td className='table-blog-title'><a href="">Lorem ipsum do...</a></td>
-                        <td>Programming</td>
-                        <td>23</td>
-                        <td className='table-blog-comm'><a href="">11</a></td>
-                        <td>123</td>
-                        <td>43</td>
-                        <td>12/12/2021</td>
-                        <td><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td className='table-blog-title'><a href="">Lorem ipsum do...</a></td>
-                        <td>Programming</td>
-                        <td>23</td>
-                        <td className='table-blog-comm'><a href="">11</a></td>
-                        <td>123</td>
-                        <td>43</td>
-                        <td>12/12/2021</td>
-                        <td><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td className='table-blog-title'><a href="">Lorem ipsum do...</a></td>
-                        <td>Programming</td>
-                        <td>23</td>
-                        <td className='table-blog-comm'><a href="">11</a></td>
-                        <td>123</td>
-                        <td>43</td>
-                        <td>12/12/2021</td>
-                        <td><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td className='table-blog-title'><a href="">Lorem ipsum do...</a></td>
-                        <td>Programming</td>
-                        <td>23</td>
-                        <td className='table-blog-comm'><a href="">11</a></td>
-                        <td>123</td>
-                        <td>43</td>
-                        <td>12/12/2021</td>
-                        <td><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td>
-                    </tr>
+                    {
+                        td.map((item)=>{
+                            return(
+                                <tr key={item.id}>
+                                    {
+                                        id === 'dashboard' &&
+                                        <>
+                                        <td>{item.id}</td>
+                                        <td>{item.title.slice(0,7)}...</td>
+                                        <td>{item.category}</td>
+                                        <td>{item.likes}</td>
+                                        <td>{item.comments}</td>
+                                        <td>{item.totViews}</td>
+                                        <td>{item.currViews}</td>
+                                        <td>{item.date}</td>
+                                        <td>
+                                            <Link to='' ><i class="fa-solid fa-pen"></i></Link>
+                                            <Link to={'/blog/'+slugify(item.title,{replacement:'-',lower:true})+'-'+item.id}><i class="fa-solid fa-eye"></i></Link>
+                                            <button onClick={disclaimerToDeleteBlog}><i class="fa-solid fa-trash"></i></button>
+                                        </td>
+                                        </>
+                                    }
+                                    {
+                                        id === 'all-comments' &&
+                                        <>
+                                        <td>{item.id}</td>
+                                        <td>{item.blogId}</td>
+                                        <td>{item.title}</td>
+                                        <td>{item.date}</td>
+                                        <td className='comment-btn'><button onClick={()=>showFullComment(item.comment)}>{item.comment.slice(0,8)}...</button></td>
+                                        <td><button onClick={disclaimerToDeleteComm}><i class="fa-solid fa-trash"></i></button></td>
 
+                                        </>
+                                    }
+                                    {
+                                        id === 'pending-comments' &&
+                                        <>
+                                        <td>{item.id}</td>
+                                        <td>{item.blogId}</td>
+                                        <td>{item.title}</td>
+                                        <td>{item.date}</td>
+                                        <td className='comment-btn'><button onClick={()=>showFullComment(item.comment)}>{item.comment.slice(0,8)}...</button></td>
+                                        <td><button><i class="fa-solid fa-check"></i></button><button><i class="fa-solid fa-xmark"></i></button></td>
 
-
-
-
-
-
-
-
-
-
-
-                    {/* <tr>
-                        <td>1</td>
-                        <td><a href="">Lorem ipsum do...</a></td>
-                        <td>Programming</td>
-                        <td>23  <i class="fa-regular fa-heart"></i></td>
-                        <td><a href="">11 <i class="fa-regular fa-comment"></i></a></td>
-                        <td>123 <i class="fa-regular fa-eye"></i></td>
-                        <td>43 <i class="fa-regular fa-eye"></i></td>
-                        <td>12/12/2021 <i class="fa-regular fa-calendar"></i></td>
-                        <td><button><i class="fa-solid fa-pen"></i></button><button><i class="fa-solid fa-trash"></i></button></td>
-                    </tr> */}
+                                        </>
+                                    }
+                                </tr>
+                            )
+                        })
+                    }
                 </table>
             </div>
         </div>

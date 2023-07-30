@@ -74,12 +74,26 @@
 
 }
 
-.blog-page-btn>div>i{
+.blog-page-btn>div>button    {
     margin-right: .5rem;
+    background-color: white;
+    border: none;
+
+}
+
+.blog-page-btn>div>a,.rating-button{
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    margin-left: .5rem;
     border: 1px solid rgb(182, 177, 177);
-    /* border: 1px solid black; */
-    padding: .5rem;
+    padding: .5rem .7rem;
     border-radius: 50%;
+}
+
+.clicked{
+    background-color: red;
+    color: white;
 }
 
 .blog-page-middle{

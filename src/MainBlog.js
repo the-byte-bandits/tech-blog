@@ -2,7 +2,7 @@ import React from 'react'
 import './MainBlog.css'
 import Blog from './Blog'
 
-export default function MainBlog() {
+export default function MainBlog({allBlogs}) {
   return (
     <main className="main">
         <div className="main-container">
@@ -23,17 +23,16 @@ export default function MainBlog() {
               <h1>Recent blog posts</h1>
 
               <div className="blogs-all-row row">
-                <Blog />
-                <Blog />
-                <Blog />
+                <Blog blog={allBlogs[0]}/>
+                <Blog blog={allBlogs[1]}/>
+                <Blog blog={allBlogs[2]}/>
+                <Blog blog={allBlogs[3]}/>
+                <Blog blog={allBlogs[4]}/>
+                <Blog blog={allBlogs[4]}/>
+                <Blog blog={allBlogs[4]}/>
+                <Blog blog={allBlogs[4]}/>
+                <Blog blog={allBlogs[4]}/>  
 
-                <Blog />
-                <Blog />
-                <Blog />
-                
-                <Blog />
-                <Blog />
-                <Blog />
               </div>
               {/* <div className="ad-1"><p>Ads*</p></div> */}
 

@@ -1,11 +1,12 @@
 .dashboard{
-
-
+    
     /* border: 1px solid red; */
 }
 
 .dashboard-container{
     display: flex;
+    /* padding: 1rem;
+    box-sizing: border-box; */
     
     /* border: 1px solid red; */
     

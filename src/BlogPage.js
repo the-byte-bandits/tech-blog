@@ -1,31 +1,98 @@
 import React from 'react'
 import './BlogPage.css'
 import CommentsSection from './CommentsSection'
+import Swal from 'sweetalert2';
+import { useEffect } from 'react';
+import { format } from 'date-fns';
 
-export default function BlogPage() {
+
+export default function BlogPage({blog,comments}) {
+   
+
+    // console.log(blog)
+
+    useEffect(()=>{
+        const ratingBtnInit=()=>{
+            document.querySelectorAll('.rating-button').forEach((button) => {
+            button.addEventListener('click', (event) => {
+              document.querySelectorAll('.rating-button').forEach((btn) => {
+                btn.classList.remove('clicked');
+              });
+              event.target.classList.add('clicked');
+            });
+          });
+        }
+
+        ratingBtnInit()
+    },[])
+
+    const showRatingAlert = () => {
+        const ratings = [1, 2, 3, 4, 5];
+      
+        Swal.fire({
+          title: 'Rate This',
+          showCancelButton: true,
+          html: `
+            <div style="display: flex; justify-content: space-around;">
+              ${ratings
+                .map(
+                  (rating) => `
+                    <button class="rating-button" value="${rating}">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>`
+                )
+                .join('')}
+            </div>
+          `,
+          preConfirm: (result) => {
+            const clickedButton = document.querySelector('.rating-button.clicked');
+            if (clickedButton) {
+              return parseInt(clickedButton.value);
+            } else {
+              return null;
+            }
+          },
+        }).then((result) => {
+          if (result.isConfirmed && result.value !== null) {
+            console.log('Rating:', result.value);
+          }
+        });
+
+        // Add event listeners to handle button clicks
+        document.querySelectorAll('.rating-button').forEach((button) => {
+            button.addEventListener('click', (event) => {
+              document.querySelectorAll('.rating-button').forEach((btn) => {
+                btn.classList.remove('clicked');
+              });
+              event.target.classList.add('clicked');
+            });
+          });
+      };
+      
+    
   return (
     <div className="blog-page">
         <div className="blog-page-container">
             <div className="blog-page-upper">
-                <p>Style.</p>
-                <h1>The Versatile Cardigan: How to Style and Wear this Classic Wardrobe Staple</h1>
+                <p>{blog.category}.</p>
+                <h1>{blog.title}</h1>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et harum facere accusantium dolores maiores hic, ipsum consequuntur saepe repellat repellendus. Odio deserunt ipsum delectus. Modi quisquam nulla asperiores harum odit.</p>
                 
                 <div className="blog-page-info">
-                    <p>By&nbsp;<section>Barbara Keen.</section></p>
-                    <p>12 June 2023</p>
+                    <p>By&nbsp;<section>{blog.author}.</section></p>
+                    <p>{format(new Date(blog.date), 'dd MMM yyyy')}</p>
                 </div>
                 
                 
                 <div className="blog-page-btn">
                     <div>
-                        <i class="fa-regular fa-heart"></i>
-                        <i class="fa-solid fa-comment"></i>
+                        <button onClick={showRatingAlert}><i class="fa-regular fa-heart"></i> {blog.likes}</button>
+                        <button><i class="fa-regular fa-comment"></i> {comments.length}</button>
                     </div>
                     <div>
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-twitter"></i>
-                        <i class="fa-brands fa-facebook"></i>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
@@ -33,13 +100,12 @@ export default function BlogPage() {
                 <img src={require('./images/1.png')} alt="" />
             </div>
             <div className="blog-page-bottom">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique ea minima, autem explicabo enim tempora doloribus corporis quasi reiciendis illo quas sed velit voluptas? Eligendi ullam earum omnis unde maxime.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa odio itaque sapiente ratione, quos ea id. Maxime exercitationem, deleniti eveniet aspernatur in at nobis, officiis aliquid beatae expedita nesciunt natus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, enim facilis! Error deleniti, accusamus est, distinctio beatae earum molestiae itaque ipsam eius neque odio? Enim, optio? Mollitia, itaque excepturi? Deleniti! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis incidunt voluptatibus aliquid rerum, perspiciatis optio labore odit. Provident maiores, dolorum voluptatem deleniti quia amet vel mollitia temporibus ab pariatur ratione?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique ea minima, autem explicabo enim tempora doloribus corporis quasi reiciendis illo quas sed velit voluptas? Eligendi ullam earum omnis unde maxime.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa odio itaque sapiente ratione, quos ea id. Maxime exercitationem, deleniti eveniet aspernatur in at nobis, officiis aliquid beatae expedita nesciunt natus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, enim facilis! Error deleniti, accusamus est, distinctio beatae earum molestiae itaque ipsam eius neque odio? Enim, optio? Mollitia, itaque excepturi? Deleniti! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis incidunt voluptatibus aliquid rerum, perspiciatis optio labore odit. Provident maiores, dolorum voluptatem deleniti quia amet vel mollitia temporibus ab pariatur ratione?</p>
+                {blog.blog}
             </div>
         </div>
 
 
-        <CommentsSection />
+        <CommentsSection comments={comments} />
     </div>
   )
 }
