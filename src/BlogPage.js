@@ -6,10 +6,7 @@ import { useEffect } from 'react';
 import { format } from 'date-fns';
 
 
-export default function BlogPage({blog,comments}) {
-   
-
-    // console.log(blog)
+export default function BlogPage({blog,comments,ratings}) {
 
     useEffect(()=>{
         const ratingBtnInit=()=>{
@@ -68,6 +65,12 @@ export default function BlogPage({blog,comments}) {
             });
           });
       };
+
+    const rating=()=>{
+        let sum=0
+        ratings.forEach(rating=>sum+=rating.rating)
+        return (sum/ratings.length).toFixed(1)
+    }
       
     
   return (
@@ -86,8 +89,10 @@ export default function BlogPage({blog,comments}) {
                 
                 <div className="blog-page-btn">
                     <div>
-                        <button onClick={showRatingAlert}><i class="fa-regular fa-heart"></i> {blog.likes}</button>
-                        <button><i class="fa-regular fa-comment"></i> {comments.length}</button>
+                        <button onClick={showRatingAlert}><i class="fa-regular fa-heart"></i></button>
+                        &nbsp;<strong>{rating()}</strong>&nbsp;
+                        <button onClick={()=>document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' })}><i class="fa-regular fa-comment"></i></button>
+                        &nbsp;<strong>{comments.length}</strong>
                     </div>
                     <div>
                         <a href=""><i class="fa-brands fa-instagram"></i></a>

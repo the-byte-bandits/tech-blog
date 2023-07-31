@@ -84,6 +84,79 @@ function App() {
     },
 ]
 
+const allRatings=[
+  {
+    id:1,
+    blogId:1,
+    userName:"John Doe",
+    rating:5,
+    date:'12/12/2021',
+  },
+  {
+    id:2,
+    blogId:1,
+    userName:"John Doe",
+    rating:5,
+    date:'12/12/2021',
+  },
+  {
+    id:3,
+    blogId:2,
+    userName:"John Doe",
+    rating:5,
+    date:'12/12/2021',
+  },
+  {
+    id:4,
+    blogId:2,
+    userName:"John Doe",
+    rating:3,
+    date:'12/12/2021',
+  },
+  {
+    id:5,
+    blogId:3,
+    userName:"John Doe",
+    rating:4,
+    date:'12/12/2021',
+  },
+  {
+    id:6,
+    blogId:3,
+    userName:"John Doe",
+    rating:1,
+    date:'12/12/2021',
+  },
+  {
+    id:7,
+    blogId:4,
+    userName:"John Doe",
+    rating:5,
+    date:'12/12/2021',
+  },
+  {
+    id:8,
+    blogId:4,
+    userName:"John Doe",
+    rating:4,
+    date:'12/12/2021',
+  },
+  {
+    id:9,
+    blogId:5,
+    userName:"John Doe",
+    rating:5,
+    date:'12/12/2021',
+  },
+  {
+    id:10,
+    blogId:5,
+    userName:"John Doe",
+    rating:5,
+    date:'12/12/2021',
+  },
+]
+
 const allComments=[
         {
             id:1,
@@ -174,6 +247,7 @@ const pendingComments=[
     return (
         <BlogPage 
           blog={allBlogs.find((blog) => blog.id == blogId)}
+          ratings={allRatings.filter((obj) => obj.blogId == blogId)}
           comments={allComments.filter((obj) => obj.blogId == blogId)}
         />
     );
@@ -187,7 +261,7 @@ const pendingComments=[
       <Router>
         <ScrollToTop />
         <Routes>
-          <Route path='/' element={<><Navbarr /><MainBlog allBlogs={allBlogs} /><Footer /></>}/>
+          <Route path='/' element={<><Navbarr /><MainBlog allBlogs={allBlogs} allRatings={allRatings} /><Footer /></>}/>
           <Route path='/blog/*' element={<><Navbarr /><BlogPageWithDetails /><Footer /></>}/>
           <Route path='/contact-us' element={<><Navbarr /><ContactUs /><Footer /></>} />
           <Route path='/about-us' element={<><Navbarr /><AboutUs /><Footer /></>} />

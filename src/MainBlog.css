@@ -45,6 +45,15 @@
     /* border: 1px solid white; */
 }
 
+.main-blog-content>a{
+    text-decoration: none;
+    color: white;
+}
+
+.main-blog-content>a:hover{
+    text-decoration: underline;
+}
+
 .main-blog-content>p, .main-blog-content>h1{
     margin: 1rem 0;
     /* padding: 2rem 2rem; */

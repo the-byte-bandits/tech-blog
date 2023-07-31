@@ -75,10 +75,11 @@
 }
 
 .blog-page-btn>div>button    {
-    margin-right: .5rem;
+    /* margin-right: .5rem; */
     background-color: white;
-    border: none;
-
+    padding: .5rem .7rem;
+    border-radius: 50%;
+    border: 1px solid rgb(182, 177, 177);
 }
 
 .blog-page-btn>div>a,.rating-button{
