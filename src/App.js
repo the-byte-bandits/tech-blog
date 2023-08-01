@@ -32,7 +32,7 @@ function App() {
         currViews:43,
         author:'Gloria Borger',
         blog:'Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes.',
-        date:'12/12/2021'
+        date:'12/12/2021',
     },
     {
         id:2,
@@ -252,8 +252,6 @@ const pendingComments=[
         />
     );
   };
-
-
 
 
   return (

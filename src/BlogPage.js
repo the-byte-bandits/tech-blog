@@ -110,7 +110,7 @@ export default function BlogPage({blog,comments,ratings}) {
         </div>
 
 
-        <CommentsSection comments={comments} />
+        <CommentsSection comments={comments} blogId={blog.id}/>
     </div>
   )
 }
