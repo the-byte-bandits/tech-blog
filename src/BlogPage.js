@@ -6,22 +6,22 @@ import { useEffect } from 'react';
 import { format } from 'date-fns';
 
 
-export default function BlogPage({blog,comments,ratings}) {
+export default function BlogPage({blog}) {
 
-    useEffect(()=>{
-        const ratingBtnInit=()=>{
-            document.querySelectorAll('.rating-button').forEach((button) => {
-            button.addEventListener('click', (event) => {
-              document.querySelectorAll('.rating-button').forEach((btn) => {
-                btn.classList.remove('clicked');
-              });
-              event.target.classList.add('clicked');
-            });
-          });
-        }
+    // useEffect(()=>{
+    //     const ratingBtnInit=()=>{
+    //         document.querySelectorAll('.rating-button').forEach((button) => {
+    //         button.addEventListener('click', (event) => {
+    //           document.querySelectorAll('.rating-button').forEach((btn) => {
+    //             btn.classList.remove('clicked');
+    //           });
+    //           event.target.classList.add('clicked');
+    //         });
+    //       });
+    //     }
 
-        ratingBtnInit()
-    },[])
+    //     ratingBtnInit()
+    // },[])
 
     const showRatingAlert = () => {
         const ratings = [1, 2, 3, 4, 5];
@@ -67,9 +67,11 @@ export default function BlogPage({blog,comments,ratings}) {
       };
 
     const rating=()=>{
-        let sum=0
-        ratings.forEach(rating=>sum+=rating.rating)
-        return (sum/ratings.length).toFixed(1)
+        let rating=0
+        blog.reviews.forEach((review)=>{
+            rating+=review.rating
+        })
+        return rating/blog.reviews.length
     }
       
     
@@ -92,7 +94,7 @@ export default function BlogPage({blog,comments,ratings}) {
                         <button onClick={showRatingAlert}><i class="fa-regular fa-heart"></i></button>
                         &nbsp;<strong>{rating()}</strong>&nbsp;
                         <button onClick={()=>document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' })}><i class="fa-regular fa-comment"></i></button>
-                        &nbsp;<strong>{comments.length}</strong>
+                        &nbsp;<strong>{blog.comments.length}</strong>
                     </div>
                     <div>
                         <a href=""><i class="fa-brands fa-instagram"></i></a>
@@ -110,7 +112,7 @@ export default function BlogPage({blog,comments,ratings}) {
         </div>
 
 
-        <CommentsSection comments={comments} blogId={blog.id}/>
+        <CommentsSection comments={blog.comments} blogId={blog.id}/>
     </div>
   )
 }

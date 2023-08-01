@@ -3,26 +3,26 @@ import './Dashboardd.css'
 import Dnav from './Dnav'
 import Dscreen from './Dscreen'
 
-export default function Dashboardd({allBlogs,allComments,pendingComments}) {
+export default function Dashboardd({allBlogs,user}) {
 
   return (
     <div className='dashboard'>
         <div className="dashboard-container">
-          <Dnav />
+          <Dnav user={user}/>
           <Dscreen 
             id={'dashboard'}
-            th={['ID','Title','Category','Likes','Comments','Tot. Views','Curr. Views','Date','Actions']}
+            th={['ID','Title','Category','Tot. Views','Curr. Views','Date','Actions']}
             td={allBlogs}
           />
           <Dscreen 
             id={'all-comments'}
-            th={['ID','Blog ID','Title','Date','Comment','Actions']}
-            td={allComments}              
+            th={['ID','Date','Comment','Actions']}
+            td={allBlogs.flatMap((blog) => blog.comments)}              
           />
           <Dscreen 
             id={'pending-comments'}
-            th={['ID','Blog ID','Title','Date','Comment','Actions']}
-            td={pendingComments}
+            th={['ID','Date','Comment','Actions']}
+            td={allBlogs.flatMap((blog) => blog.comments.filter((item) => item.pending === true))}
           />
         </div>
     </div>

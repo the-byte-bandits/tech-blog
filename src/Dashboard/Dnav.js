@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 
-function Dnav() {
+function Dnav({user}) {
 
     useEffect(()=>{
         const dashInit=()=>{
@@ -106,8 +106,8 @@ function Dnav() {
             </div>
             <div className="dashboard-nav-profile">
                 <img src={require('../images/hamster.png')} alt="" />
-                <h1>Gloria Borger</h1>
-                <p>gloria@gmail.com</p>
+                <h1>{user.name}</h1>
+                <p>{user.email}</p>
                 <div>
                     <button onClick={showProfileUpdateAlert}>
                         <i class="fa-solid fa-gear"></i>

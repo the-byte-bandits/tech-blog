@@ -6,27 +6,33 @@ import { Link } from 'react-router-dom'
 import slugify from 'slugify';
 
 
-export default function MainBlog({allBlogs,allRatings}) {
-
-  const highestRating=()=>{
-    let highestRating=0
-    let highestRatingBlog
-    allBlogs.forEach((blog)=>{
-      let blogRating=0
-      allRatings.forEach((rating)=>{
-        if(rating.blogId===blog.id){
-          blogRating+=rating.rating
-        }
-      })
-      if(blogRating>highestRating){
-        highestRating=blogRating
-        highestRatingBlog=blog
-      }
-    })
-    return highestRatingBlog
+export default function MainBlog({allBlogs}) {
+  
+  function calculateAverageRating(reviews) {
+    if (reviews.length === 0) return 0;
+    
+    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+    return totalRating / reviews.length;
   }
+  
+  const findHighestRatedBlog=(blogs)=> {
+    let highestRating = 0;
+    let highestRatedBlog = null;
+  
+    for (const blog of blogs) {
+      const averageRating = calculateAverageRating(blog.reviews);
+  
+      if (averageRating > highestRating) {
+        highestRating = averageRating;
+        highestRatedBlog = blog;
+      }
+    }
+  
+    return highestRatedBlog;
+  }
+  
 
-  const hrb=highestRating()
+  const hrb=findHighestRatedBlog(allBlogs)
 
   return (
     <main className="main">
@@ -35,7 +41,7 @@ export default function MainBlog({allBlogs,allRatings}) {
             <div className="main-blog">
               <div className="main-blog-container">
                 <div className="main-blog-content">
-                    <p>Featured</p>
+                    <p><strong>Top Rated</strong></p>
                     <Link to={'/blog/'+slugify(hrb.title,{replacement:'-',lower:true})+'-'+hrb.id}>
                       <h1>{hrb.title.slice(0,80)}...</h1>
                     </Link>
@@ -50,16 +56,7 @@ export default function MainBlog({allBlogs,allRatings}) {
               <h1>Recent blog posts</h1>
 
               <div className="blogs-all-row row">
-                <Blog blog={allBlogs[0]}/>
-                <Blog blog={allBlogs[1]}/>
-                <Blog blog={allBlogs[2]}/>
-                <Blog blog={allBlogs[3]}/>
-                <Blog blog={allBlogs[4]}/>
-                <Blog blog={allBlogs[4]}/>
-                <Blog blog={allBlogs[4]}/>
-                <Blog blog={allBlogs[4]}/>
-                <Blog blog={allBlogs[4]}/>  
-
+                {allBlogs.map((blog)=> <Blog key={blog.id} blog={blog} /> )}
               </div>
               {/* <div className="ad-1"><p>Ads*</p></div> */}
 

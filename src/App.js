@@ -23,6 +23,12 @@ import Error from './404/Error';
 
 function App() {
 
+  const user={
+    id:1,
+    name:"Gloria Borger",
+    email:"gloria@gmail.com",
+    password:"123456",
+  }
   const allBlogss=[
     {
       id:1,
@@ -60,7 +66,7 @@ function App() {
           email:"abc@xyx",
           date:'12/12/2021',
           comment:'Once upon a time in a land far, far away, there was a magical forest named Enchantia. In this forest, mystical creatures roamed freely, and the trees whispered secrets to those who listened closely.',
-          pending:false,
+          pending:true,
         },
         {
           id:2,
@@ -127,7 +133,7 @@ function App() {
           email: 'sophia@example.com',
           date: '11/21/2022',
           comment: 'I love capturing moments with my camera!',
-          pending: false,
+          pending: true,
         },
       ],
     },
@@ -203,7 +209,7 @@ function App() {
           email: 'henry@example.com',
           date: '01/16/2023',
           comment: 'Art history is captivating!',
-          pending: false,
+          pending: true,
         },
         {
           id: 2,
@@ -514,217 +520,217 @@ function App() {
 
 
 
-  const allBlogs=[
-    {
-        id:1,
-        title:'ChatGPT Vs Bard: Which is better for coding?',
-        category:'Programming',
-        likes:23,
-        comments:11,
-        totViews:123,
-        currViews:43,
-        author:'Gloria Borger',
-        blog:'Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes.',
-        date:'12/12/2021',
-    },
-    {
-        id:2,
-        title:'Blockchain and Cryptocurrencies Demystified',
-        category:'Crypto',
-        likes:23,
-        comments:11,
-        totViews:123,
-        currViews:43,
-        author:'Gloria Borger',
-        blog:'Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.',
-        date:'12/12/2021'
-    },
-    {
-        id:3,
-        title:'The Rise of 5G Technology and Inovation',
-        category:'Network',
-        likes:23,
-        comments:11,
-        totViews:123,
-        currViews:43,
-        author:'Gloria Borger',
-        blog:'Discover the latest advancements in 5G technology and its potential to revolutionize communication and connectivity. Learn how 5G can enable faster internet speeds, low latency, and support emerging technologies like IoT and autonomous vehicles.Discover the latest advancements in 5G technology and its potential to revolutionize communication and connectivity. Learn how 5G can enable faster internet speeds, low latency, and support emerging technologies like IoT and autonomous vehicles.Discover the latest advancements in 5G technology and its potential to revolutionize communication and connectivity. Learn how 5G can enable faster internet speeds, low latency, and support emerging technologies like IoT and autonomous vehicles.Discover the latest advancements in 5G technology and its potential to revolutionize communication and connectivity. Learn how 5G can enable faster internet speeds, low latency, and support emerging technologies like IoT and autonomous vehicles.',
-        date:'12/12/2021'
-    },
-    {
-        id:4,
-        title:'Introduction to Quantum Computing',
-        category:'Programming',
-        likes:23,
-        comments:11,
-        totViews:123,
-        currViews:43,
-        author:'Gloria Borger',
-        blog:'Unravel the complexities of quantum computing and its revolutionary implications. Learn about qubits, quantum entanglement, and how quantum computers can solve problems that are practically impossible for classical computers.Unravel the complexities of quantum computing and its revolutionary implications. Learn about qubits, quantum entanglement, and how quantum computers can solve problems that are practically impossible for classical computers.Unravel the complexities of quantum computing and its revolutionary implications. Learn about qubits, quantum entanglement, and how quantum computers can solve problems that are practically impossible for classical computers.',
-        date:'12/12/2021'
-    },
-    {
-        id:5,
-        title:'Cybersecurity Best Practices for Businesses',
-        category:'Programming',
-        likes:23,
-        comments:11,
-        totViews:123,
-        currViews:43,
-        author:'Gloria Borger',
-        blog:' Understand the essential cybersecurity measures businesses must adopt to safeguard their sensitive data and protect against cyber threats. Explore topics such as encryption, multi-factor authentication, and proactive threat detection. Understand the essential cybersecurity measures businesses must adopt to safeguard their sensitive data and protect against cyber threats. Explore topics such as encryption, multi-factor authentication, and proactive threat detection. Understand the essential cybersecurity measures businesses must adopt to safeguard their sensitive data and protect against cyber threats. Explore topics such as encryption, multi-factor authentication, and proactive threat detection. Understand the essential cybersecurity measures businesses must adopt to safeguard their sensitive data and protect against cyber threats. Explore topics such as encryption, multi-factor authentication, and proactive threat detection.',
-        date:'12/12/2021'
-    },
-]
+//   const allBlogs=[
+//     {
+//         id:1,
+//         title:'ChatGPT Vs Bard: Which is better for coding?',
+//         category:'Programming',
+//         likes:23,
+//         comments:11,
+//         totViews:123,
+//         currViews:43,
+//         author:'Gloria Borger',
+//         blog:'Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes. Explore the transformative impact of AI and machine learning in the healthcare industry. Learn how AI-powered algorithms can aid in diagnosing diseases, analyzing medical images, and predicting patient outcomes.',
+//         date:'12/12/2021',
+//     },
+//     {
+//         id:2,
+//         title:'Blockchain and Cryptocurrencies Demystified',
+//         category:'Crypto',
+//         likes:23,
+//         comments:11,
+//         totViews:123,
+//         currViews:43,
+//         author:'Gloria Borger',
+//         blog:'Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.Delve into the world of blockchain technology and cryptocurrencies. Understand the fundamentals of how blockchain works, its applications beyond cryptocurrency, and the potential it holds for disrupting various industries.',
+//         date:'12/12/2021'
+//     },
+//     {
+//         id:3,
+//         title:'The Rise of 5G Technology and Inovation',
+//         category:'Network',
+//         likes:23,
+//         comments:11,
+//         totViews:123,
+//         currViews:43,
+//         author:'Gloria Borger',
+//         blog:'Discover the latest advancements in 5G technology and its potential to revolutionize communication and connectivity. Learn how 5G can enable faster internet speeds, low latency, and support emerging technologies like IoT and autonomous vehicles.Discover the latest advancements in 5G technology and its potential to revolutionize communication and connectivity. Learn how 5G can enable faster internet speeds, low latency, and support emerging technologies like IoT and autonomous vehicles.Discover the latest advancements in 5G technology and its potential to revolutionize communication and connectivity. Learn how 5G can enable faster internet speeds, low latency, and support emerging technologies like IoT and autonomous vehicles.Discover the latest advancements in 5G technology and its potential to revolutionize communication and connectivity. Learn how 5G can enable faster internet speeds, low latency, and support emerging technologies like IoT and autonomous vehicles.',
+//         date:'12/12/2021'
+//     },
+//     {
+//         id:4,
+//         title:'Introduction to Quantum Computing',
+//         category:'Programming',
+//         likes:23,
+//         comments:11,
+//         totViews:123,
+//         currViews:43,
+//         author:'Gloria Borger',
+//         blog:'Unravel the complexities of quantum computing and its revolutionary implications. Learn about qubits, quantum entanglement, and how quantum computers can solve problems that are practically impossible for classical computers.Unravel the complexities of quantum computing and its revolutionary implications. Learn about qubits, quantum entanglement, and how quantum computers can solve problems that are practically impossible for classical computers.Unravel the complexities of quantum computing and its revolutionary implications. Learn about qubits, quantum entanglement, and how quantum computers can solve problems that are practically impossible for classical computers.',
+//         date:'12/12/2021'
+//     },
+//     {
+//         id:5,
+//         title:'Cybersecurity Best Practices for Businesses',
+//         category:'Programming',
+//         likes:23,
+//         comments:11,
+//         totViews:123,
+//         currViews:43,
+//         author:'Gloria Borger',
+//         blog:' Understand the essential cybersecurity measures businesses must adopt to safeguard their sensitive data and protect against cyber threats. Explore topics such as encryption, multi-factor authentication, and proactive threat detection. Understand the essential cybersecurity measures businesses must adopt to safeguard their sensitive data and protect against cyber threats. Explore topics such as encryption, multi-factor authentication, and proactive threat detection. Understand the essential cybersecurity measures businesses must adopt to safeguard their sensitive data and protect against cyber threats. Explore topics such as encryption, multi-factor authentication, and proactive threat detection. Understand the essential cybersecurity measures businesses must adopt to safeguard their sensitive data and protect against cyber threats. Explore topics such as encryption, multi-factor authentication, and proactive threat detection.',
+//         date:'12/12/2021'
+//     },
+// ]
 
-const allRatings=[
-  {
-    id:1,
-    blogId:1,
-    userName:"John Doe",
-    rating:5,
-    date:'12/12/2021',
-  },
-  {
-    id:2,
-    blogId:1,
-    userName:"John Doe",
-    rating:5,
-    date:'12/12/2021',
-  },
-  {
-    id:3,
-    blogId:2,
-    userName:"John Doe",
-    rating:5,
-    date:'12/12/2021',
-  },
-  {
-    id:4,
-    blogId:2,
-    userName:"John Doe",
-    rating:3,
-    date:'12/12/2021',
-  },
-  {
-    id:5,
-    blogId:3,
-    userName:"John Doe",
-    rating:4,
-    date:'12/12/2021',
-  },
-  {
-    id:6,
-    blogId:3,
-    userName:"John Doe",
-    rating:1,
-    date:'12/12/2021',
-  },
-  {
-    id:7,
-    blogId:4,
-    userName:"John Doe",
-    rating:5,
-    date:'12/12/2021',
-  },
-  {
-    id:8,
-    blogId:4,
-    userName:"John Doe",
-    rating:4,
-    date:'12/12/2021',
-  },
-  {
-    id:9,
-    blogId:5,
-    userName:"John Doe",
-    rating:5,
-    date:'12/12/2021',
-  },
-  {
-    id:10,
-    blogId:5,
-    userName:"John Doe",
-    rating:5,
-    date:'12/12/2021',
-  },
-]
+// const allRatings=[
+//   {
+//     id:1,
+//     blogId:1,
+//     userName:"John Doe",
+//     rating:5,
+//     date:'12/12/2021',
+//   },
+//   {
+//     id:2,
+//     blogId:1,
+//     userName:"John Doe",
+//     rating:5,
+//     date:'12/12/2021',
+//   },
+//   {
+//     id:3,
+//     blogId:2,
+//     userName:"John Doe",
+//     rating:5,
+//     date:'12/12/2021',
+//   },
+//   {
+//     id:4,
+//     blogId:2,
+//     userName:"John Doe",
+//     rating:3,
+//     date:'12/12/2021',
+//   },
+//   {
+//     id:5,
+//     blogId:3,
+//     userName:"John Doe",
+//     rating:4,
+//     date:'12/12/2021',
+//   },
+//   {
+//     id:6,
+//     blogId:3,
+//     userName:"John Doe",
+//     rating:1,
+//     date:'12/12/2021',
+//   },
+//   {
+//     id:7,
+//     blogId:4,
+//     userName:"John Doe",
+//     rating:5,
+//     date:'12/12/2021',
+//   },
+//   {
+//     id:8,
+//     blogId:4,
+//     userName:"John Doe",
+//     rating:4,
+//     date:'12/12/2021',
+//   },
+//   {
+//     id:9,
+//     blogId:5,
+//     userName:"John Doe",
+//     rating:5,
+//     date:'12/12/2021',
+//   },
+//   {
+//     id:10,
+//     blogId:5,
+//     userName:"John Doe",
+//     rating:5,
+//     date:'12/12/2021',
+//   },
+// ]
 
-const allComments=[
-        {
-            id:1,
-            blogId:1,
-            userName:"John Doe",
-            title:'Lorem ipsum do...',
-            date:'12/12/2021',
-            comment:'Once upon a time in a land far, far away, there was a magical forest named Enchantia. In this forest, mystical creatures roamed freely, and the trees whispered secrets to those who listened closely.'
-        },
-        {
-            id:2,
-            blogId:2,
-            userName:"John Doe",
-            title:'Lorem ipsum do...',
-            date:'12/12/2021',
-            comment:"As her words faded into the breeze, the tree's leaves rustled, and a soft glow enveloped Mia. In that moment, she felt a surge of profound knowledge flow through her veins."
-        },
-        {
-            id:3,
-            blogId:3,
-            userName:"John Doe",
-            title:'Lorem ipsum do...',
-            date:'12/12/2021',
-            comment:"Finally, after days of travel, Mia arrived at the sacred clearing where the Tree of Wisdom stood majestically."
-        },
-        {
-            id:4,
-            blogId:4,
-            userName:"John Doe",
-            title:'Lorem ipsum do...',
-            date:'12/12/2021',
-            comment:"Yet, her determination and courage remained unyielding. She battled through brambles, crossed rushing rivers on rickety bridges, and outwitted mischievous goblins."
-        },
-        {
-            id:5,
-            blogId:1,
-            userName:"John Doe",
-            title:'Lorem ipsum do...',
-            date:'12/12/2021',
-            comment:"As Mia continued deeper into the forest, the path grew treacherous, and she faced challenges she had never encountered before and she faced challenges she had never encountered before."
-        },
-        {
-            id:6,
-            blogId:2,
-            userName:"John Doe",
-            title:'Lorem ipsum do...',
-            date:'12/12/2021',
-            comment:"Along her journey, she encountered playful fairies who led her through the maze of trees, and wise old owls who shared cryptic riddles to test her wit."
-        },
-        {
-            id:7,
-            blogId:3,
-            userName:"John Doe",
-            title:'Lorem ipsum do...',
-            date:'12/12/2021',
-            comment:"Yet, her determination and courage remained unyielding. She battled through brambles, crossed rushing rivers on rickety bridges, and outwitted mischievous goblins."
-        },
-    ]
+// const allComments=[
+//         {
+//             id:1,
+//             blogId:1,
+//             userName:"John Doe",
+//             title:'Lorem ipsum do...',
+//             date:'12/12/2021',
+//             comment:'Once upon a time in a land far, far away, there was a magical forest named Enchantia. In this forest, mystical creatures roamed freely, and the trees whispered secrets to those who listened closely.'
+//         },
+//         {
+//             id:2,
+//             blogId:2,
+//             userName:"John Doe",
+//             title:'Lorem ipsum do...',
+//             date:'12/12/2021',
+//             comment:"As her words faded into the breeze, the tree's leaves rustled, and a soft glow enveloped Mia. In that moment, she felt a surge of profound knowledge flow through her veins."
+//         },
+//         {
+//             id:3,
+//             blogId:3,
+//             userName:"John Doe",
+//             title:'Lorem ipsum do...',
+//             date:'12/12/2021',
+//             comment:"Finally, after days of travel, Mia arrived at the sacred clearing where the Tree of Wisdom stood majestically."
+//         },
+//         {
+//             id:4,
+//             blogId:4,
+//             userName:"John Doe",
+//             title:'Lorem ipsum do...',
+//             date:'12/12/2021',
+//             comment:"Yet, her determination and courage remained unyielding. She battled through brambles, crossed rushing rivers on rickety bridges, and outwitted mischievous goblins."
+//         },
+//         {
+//             id:5,
+//             blogId:1,
+//             userName:"John Doe",
+//             title:'Lorem ipsum do...',
+//             date:'12/12/2021',
+//             comment:"As Mia continued deeper into the forest, the path grew treacherous, and she faced challenges she had never encountered before and she faced challenges she had never encountered before."
+//         },
+//         {
+//             id:6,
+//             blogId:2,
+//             userName:"John Doe",
+//             title:'Lorem ipsum do...',
+//             date:'12/12/2021',
+//             comment:"Along her journey, she encountered playful fairies who led her through the maze of trees, and wise old owls who shared cryptic riddles to test her wit."
+//         },
+//         {
+//             id:7,
+//             blogId:3,
+//             userName:"John Doe",
+//             title:'Lorem ipsum do...',
+//             date:'12/12/2021',
+//             comment:"Yet, her determination and courage remained unyielding. She battled through brambles, crossed rushing rivers on rickety bridges, and outwitted mischievous goblins."
+//         },
+//     ]
 
-const pendingComments=[
-            {
-              id:1,
-              blogId:1,
-              title:'Lorem ipsum do...',
-              date:'12/12/2021',
-              comment:'hello one'
-          },
-          {
-              id:2,
-              blogId:2,
-              title:'Lorem ipsum do...',
-              date:'12/12/2021',
-              comment:'hello two'
-          }
-        ]
+// const pendingComments=[
+//             {
+//               id:1,
+//               blogId:1,
+//               title:'Lorem ipsum do...',
+//               date:'12/12/2021',
+//               comment:'hello one'
+//           },
+//           {
+//               id:2,
+//               blogId:2,
+//               title:'Lorem ipsum do...',
+//               date:'12/12/2021',
+//               comment:'hello two'
+//           }
+//         ]
 
 
 
@@ -738,10 +744,8 @@ const pendingComments=[
     console.log('ID',blogId) 
   
     return (
-        <BlogPage 
-          blog={allBlogs.find((blog) => blog.id == blogId)}
-          ratings={allRatings.filter((obj) => obj.blogId == blogId)}
-          comments={allComments.filter((obj) => obj.blogId == blogId)}
+        <BlogPage
+          blog={allBlogss.find((blog) => blog.id == blogId)}
         />
     );
   };
@@ -752,7 +756,7 @@ const pendingComments=[
       <Router>
         <ScrollToTop />
         <Routes>
-          <Route path='/' element={<><Navbarr /><MainBlog allBlogs={allBlogs} allRatings={allRatings} /><Footer /></>}/>
+          <Route path='/' element={<><Navbarr /><MainBlog allBlogs={allBlogss}/><Footer /></>}/>
           <Route path='/blog/*' element={<><Navbarr /><BlogPageWithDetails /><Footer /></>}/>
           <Route path='/contact-us' element={<><Navbarr /><ContactUs /><Footer /></>} />
           <Route path='/about-us' element={<><Navbarr /><AboutUs /><Footer /></>} />
@@ -760,7 +764,7 @@ const pendingComments=[
           <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
           <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
           <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
-          <Route path='/dashboard' element={<Dashboardd allBlogs={allBlogs} allComments={allComments} pendingComments={pendingComments}/>} />
+          <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
           <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}
         </Routes>

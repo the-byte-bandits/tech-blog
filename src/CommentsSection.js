@@ -9,6 +9,7 @@ function CommentsSection({comments,blogId}) {
   const [comment,setComment]=useState({})
   const [userName,setUserName]=useState('')
   const [userComment,setUserComment]=useState('')
+  const [email,setEmail]=useState('')
   
 
   
@@ -19,11 +20,11 @@ function CommentsSection({comments,blogId}) {
         }else{
             setComment({
                 id:comments.length+1,
-                blogId:blogId,
-                title:'Lorem ipsum do...',
                 userName:userName,
                 comment:userComment,
-                date:new Date()
+                date:new Date(),
+                email:email,
+                pending:true,
             })
             console.log(comment)
             setUserName('')
@@ -44,11 +45,14 @@ function CommentsSection({comments,blogId}) {
         <div className="comments-section-container">
             <h1>Reviews ({comments.length})</h1>
             <div className="add-comment">
-                <img src={require('./images/user-img.png')} alt="" />
+                {/* <img src={require('./images/user-img.png')} alt="" /> */}
                 <form action="">
-                    <input name='userName' type="text" placeholder="Name" value={userName} onChange={(e)=>setUserName(e.target.value)}/>
-                    <input name='userComment' type="text" placeholder="Add a review..." value={userComment} onChange={(e)=>setUserComment(e.target.value)}/>
-                    <button onClick={handleCommentSubmit}><i class="fa-solid fa-paper-plane"></i></button>
+                  <div>
+                      <input name='userName' type="text" placeholder="Name" value={userName} onChange={(e)=>setUserName(e.target.value)}/>
+                      <input name='email' type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                  </div>
+                  <input name='userComment' type="text" placeholder="Add a review..." value={userComment} onChange={(e)=>setUserComment(e.target.value)}/>
+                  <button onClick={handleCommentSubmit}><i class="fa-solid fa-paper-plane"></i> Submit</button>
                 </form>
                 
             </div>
