@@ -17,7 +17,7 @@ export default function TopCategory({ top3BlogsPerCategoryByRating }) {
               <div key={index}>
                 {blog.image && <img className="blog-image" src={blog.image} alt={blog.title} />}
                 <p className="blog-item">
-                  <strong>{blog.title}</strong> (Rating: {blog.rating})
+                  <strong>{blog.title}</strong> 
                 </p>
               </div>
             ))}
