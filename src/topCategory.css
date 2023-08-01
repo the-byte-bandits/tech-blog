@@ -13,6 +13,19 @@
     margin-bottom: 10px;
   }
   
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .category-card {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
   .category-heading {
     color: #28a745;
     font-size: 20px;
@@ -22,5 +35,13 @@
   .blog-item {
     font-size: 16px;
     margin-bottom: 5px;
+  }
+  /* ... (previously defined styles) ... */
+
+.blog-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
   }
   

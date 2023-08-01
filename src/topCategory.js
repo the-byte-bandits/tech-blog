@@ -9,18 +9,21 @@ export default function TopCategory({ top3BlogsPerCategoryByRating }) {
   return (
     <div className="top-category-container">
       <h2 className="top-category-heading">Top Blogs by Category</h2>
-      {Object.entries(top3BlogsPerCategoryByRating).map(([category, blogs]) => (
-        <div key={category}>
-          <h3 className="category-heading">{category}</h3>
-          <ul>
+      <div className="grid-container">
+        {Object.entries(top3BlogsPerCategoryByRating).map(([category, blogs]) => (
+          <div key={category} className="category-card">
+            <h3 className="category-heading">{category}</h3>
             {blogs.map((blog, index) => (
-              <li key={index} className="blog-item">
-                <strong>{blog.title}</strong>
-              </li>
+              <div key={index}>
+                {blog.image && <img className="blog-image" src={blog.image} alt={blog.title} />}
+                <p className="blog-item">
+                  <strong>{blog.title}</strong> (Rating: {blog.rating})
+                </p>
+              </div>
             ))}
-          </ul>
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

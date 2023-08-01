@@ -43,7 +43,7 @@ function App() {
         {
           id:1,
           userName:"John D",
-          rating:5,
+          rating:7,
           date:'12/12/2021',    
         },
         {
@@ -104,7 +104,7 @@ function App() {
       currViews: 87,
       date: '11/19/2022',
       blog: 'Unleash your creativity through the lens and explore the world of photography. Learn about different camera techniques, composition, and post-processing to capture stunning images.',
-      reviews: [
+      reviews:[
         {
           id: 1,
           userName: 'Oliver',
