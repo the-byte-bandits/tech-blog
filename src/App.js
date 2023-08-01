@@ -808,8 +808,8 @@ console.log(top3BlogsPerCategoryByRating);
           <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
           <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
           <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
-          <Route path='/topcategory' element={<><TopCategory /></>} />
-          
+          <Route path='/topcategory' element={<><TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating} /></>} />
+          {/*  */}
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}
         </Routes>
       </Router>
