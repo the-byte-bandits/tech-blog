@@ -750,6 +750,33 @@ function App() {
     );
   };
 
+// function extractTop3BlogsPerCategoryByRating(allBlogs) {
+//   // Group blogs by category
+//   const blogsByCategory = {};
+//   allBlogs.forEach((blog) => {
+//     if (!blogsByCategory[blog.category]) {
+//       blogsByCategory[blog.category] = [];
+//     }
+//     blogsByCategory[blog.category].push(blog);
+//   });
+
+//   // Sort blogs within each category based on average rating
+//   for (const category in blogsByCategory) {
+//     blogsByCategory[category].sort((a, b) => {
+//       const avgRatingA = calculateAverageRating(a.reviews);
+//       const avgRatingB = calculateAverageRating(b.reviews);
+//       return avgRatingB - avgRatingA;
+//     });
+//   }
+
+//   // Extract top 3 blogs from each category
+//   const top3BlogsPerCategory = {};
+//   for (const category in blogsByCategory) {
+//     top3BlogsPerCategory[category] = blogsByCategory[category].slice(0, 3);
+//   }
+
+//   return top3BlogsPerCategory;
+// }
 function extractTop3BlogsPerCategoryByRating(allBlogs) {
   // Group blogs by category
   const blogsByCategory = {};
@@ -772,11 +799,20 @@ function extractTop3BlogsPerCategoryByRating(allBlogs) {
   // Extract top 3 blogs from each category
   const top3BlogsPerCategory = {};
   for (const category in blogsByCategory) {
-    top3BlogsPerCategory[category] = blogsByCategory[category].slice(0, 3);
+    top3BlogsPerCategory[category] = blogsByCategory[category].slice(0, 3); // Modify to slice(0, 3) to get top 3 blogs
   }
 
   return top3BlogsPerCategory;
 }
+
+function calculateAverageRating(reviews) {
+  if (reviews.length === 0) {
+    return 0;
+  }
+  const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+  return totalRating / reviews.length;
+}
+
 
 function calculateAverageRating(reviews) {
   if (reviews.length === 0) {
@@ -809,7 +845,7 @@ console.log(top3BlogsPerCategoryByRating);
           <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
           <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
           <Route path='/topcategory' element={<><TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating} /></>} />
-          {/*  */}
+          
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}
         </Routes>
       </Router>
