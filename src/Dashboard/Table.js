@@ -91,8 +91,6 @@ export default function Table({id,th,td}) {
                                         <td>{item.id}</td>
                                         <td>{item.title.slice(0,7)}...</td>
                                         <td>{item.category}</td>
-                                        <td>{item.likes}</td>
-                                        <td>{item.comments}</td>
                                         <td>{item.totViews}</td>
                                         <td>{item.currViews}</td>
                                         <td>{item.date}</td>
@@ -107,10 +105,8 @@ export default function Table({id,th,td}) {
                                         id === 'all-comments' &&
                                         <>
                                         <td>{item.id}</td>
-                                        <td>{item.blogId}</td>
-                                        <td>{item.title}</td>
                                         <td>{item.date}</td>
-                                        <td className='comment-btn'><button onClick={()=>showFullComment(item.comment)}>{item.comment.slice(0,8)}...</button></td>
+                                        <td className='comment-btn'><button onClick={()=>showFullComment(item.comment)}>{item.comment.slice(0,12)}...</button></td>
                                         <td><button onClick={disclaimerToDeleteComm}><i class="fa-solid fa-trash"></i></button></td>
 
                                         </>
@@ -119,10 +115,8 @@ export default function Table({id,th,td}) {
                                         id === 'pending-comments' &&
                                         <>
                                         <td>{item.id}</td>
-                                        <td>{item.blogId}</td>
-                                        <td>{item.title}</td>
                                         <td>{item.date}</td>
-                                        <td className='comment-btn'><button onClick={()=>showFullComment(item.comment)}>{item.comment.slice(0,8)}...</button></td>
+                                        <td className='comment-btn'><button onClick={()=>showFullComment(item.comment)}>{item.comment.slice(0,12)}...</button></td>
                                         <td><button><i class="fa-solid fa-check"></i></button><button><i class="fa-solid fa-xmark"></i></button></td>
 
                                         </>

@@ -7,3 +7,19 @@
     padding: 20px;
     box-sizing: border-box;
 }
+
+.image-upload{
+    
+}
+
+.jodit-react-container{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.jodit-workplace{
+    width: 100%;
+    height: 50vh !important;
+    box-sizing: border-box;
+}
