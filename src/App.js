@@ -18,7 +18,7 @@ import ScrollToTop from './ScrollToTop';
 import TermsOfService from './TermsOfService';
 import Dashboardd from './Dashboard/Dashboardd';
 import Error from './404/Error';
-
+import TopCategory from './topCategory';
 
 
 function App() {
@@ -808,6 +808,8 @@ console.log(top3BlogsPerCategoryByRating);
           <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
           <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
           <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
+          <Route path='/topcategory' element={<><TopCategory /></>} />
+          
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}
         </Routes>
       </Router>
