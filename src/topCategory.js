@@ -1,21 +1,21 @@
-
 import React from 'react';
+import './topCategory.css';
 
-export default function topCategory({ top3BlogsPerCategoryByRating }) {
+export default function TopCategory({ top3BlogsPerCategoryByRating }) {
   if (!top3BlogsPerCategoryByRating) {
     return <div>No data available.</div>;
   }
 
   return (
-    <div>
-      <h2>Top Blogs by Category</h2>
+    <div className="top-category-container">
+      <h2 className="top-category-heading">Top Blogs by Category</h2>
       {Object.entries(top3BlogsPerCategoryByRating).map(([category, blogs]) => (
         <div key={category}>
-          <h3>{category}</h3>
+          <h3 className="category-heading">{category}</h3>
           <ul>
             {blogs.map((blog, index) => (
-              <li key={index}>
-                <strong>{blog.title}</strong> (Rating: {blog.rating})
+              <li key={index} className="blog-item">
+                <strong>{blog.title}</strong>
               </li>
             ))}
           </ul>
