@@ -750,6 +750,48 @@ function App() {
     );
   };
 
+function extractTop3BlogsPerCategoryByRating(allBlogs) {
+  // Group blogs by category
+  const blogsByCategory = {};
+  allBlogs.forEach((blog) => {
+    if (!blogsByCategory[blog.category]) {
+      blogsByCategory[blog.category] = [];
+    }
+    blogsByCategory[blog.category].push(blog);
+  });
+
+  // Sort blogs within each category based on average rating
+  for (const category in blogsByCategory) {
+    blogsByCategory[category].sort((a, b) => {
+      const avgRatingA = calculateAverageRating(a.reviews);
+      const avgRatingB = calculateAverageRating(b.reviews);
+      return avgRatingB - avgRatingA;
+    });
+  }
+
+  // Extract top 3 blogs from each category
+  const top3BlogsPerCategory = {};
+  for (const category in blogsByCategory) {
+    top3BlogsPerCategory[category] = blogsByCategory[category].slice(0, 3);
+  }
+
+  return top3BlogsPerCategory;
+}
+
+function calculateAverageRating(reviews) {
+  if (reviews.length === 0) {
+    return 0;
+  }
+  const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+  return totalRating / reviews.length;
+}
+
+// Call the function with the allBlogss array
+const top3BlogsPerCategoryByRating = extractTop3BlogsPerCategoryByRating(allBlogss);
+
+console.log(top3BlogsPerCategoryByRating);
+
+
 
   return (
     <div className="app">
