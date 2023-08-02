@@ -18,7 +18,7 @@ import ScrollToTop from './ScrollToTop';
 import TermsOfService from './TermsOfService';
 import Dashboardd from './Dashboard/Dashboardd';
 import Error from './404/Error';
-
+import TopCategory from './topCategory';
 
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
         {
           id:1,
           userName:"John D",
-          rating:5,
+          rating:7,
           date:'12/12/2021',    
         },
         {
@@ -104,7 +104,7 @@ function App() {
       currViews: 87,
       date: '11/19/2022',
       blog: 'Unleash your creativity through the lens and explore the world of photography. Learn about different camera techniques, composition, and post-processing to capture stunning images.',
-      reviews: [
+      reviews:[
         {
           id: 1,
           userName: 'Oliver',
@@ -750,6 +750,84 @@ function App() {
     );
   };
 
+// function extractTop3BlogsPerCategoryByRating(allBlogs) {
+//   // Group blogs by category
+//   const blogsByCategory = {};
+//   allBlogs.forEach((blog) => {
+//     if (!blogsByCategory[blog.category]) {
+//       blogsByCategory[blog.category] = [];
+//     }
+//     blogsByCategory[blog.category].push(blog);
+//   });
+
+//   // Sort blogs within each category based on average rating
+//   for (const category in blogsByCategory) {
+//     blogsByCategory[category].sort((a, b) => {
+//       const avgRatingA = calculateAverageRating(a.reviews);
+//       const avgRatingB = calculateAverageRating(b.reviews);
+//       return avgRatingB - avgRatingA;
+//     });
+//   }
+
+//   // Extract top 3 blogs from each category
+//   const top3BlogsPerCategory = {};
+//   for (const category in blogsByCategory) {
+//     top3BlogsPerCategory[category] = blogsByCategory[category].slice(0, 3);
+//   }
+
+//   return top3BlogsPerCategory;
+// }
+function extractTop3BlogsPerCategoryByRating(allBlogs) {
+  // Group blogs by category
+  const blogsByCategory = {};
+  allBlogs.forEach((blog) => {
+    if (!blogsByCategory[blog.category]) {
+      blogsByCategory[blog.category] = [];
+    }
+    blogsByCategory[blog.category].push(blog);
+  });
+
+  // Sort blogs within each category based on average rating
+  for (const category in blogsByCategory) {
+    blogsByCategory[category].sort((a, b) => {
+      const avgRatingA = calculateAverageRating(a.reviews);
+      const avgRatingB = calculateAverageRating(b.reviews);
+      return avgRatingB - avgRatingA;
+    });
+  }
+
+  // Extract top 3 blogs from each category
+  const top3BlogsPerCategory = {};
+  for (const category in blogsByCategory) {
+    top3BlogsPerCategory[category] = blogsByCategory[category].slice(0, 3); // Modify to slice(0, 3) to get top 3 blogs
+  }
+
+  return top3BlogsPerCategory;
+}
+
+function calculateAverageRating(reviews) {
+  if (reviews.length === 0) {
+    return 0;
+  }
+  const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+  return totalRating / reviews.length;
+}
+
+
+function calculateAverageRating(reviews) {
+  if (reviews.length === 0) {
+    return 0;
+  }
+  const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+  return totalRating / reviews.length;
+}
+
+// Call the function with the allBlogss array
+const top3BlogsPerCategoryByRating = extractTop3BlogsPerCategoryByRating(allBlogss);
+
+console.log(top3BlogsPerCategoryByRating);
+
+
 
   return (
     <div className="app">
@@ -766,6 +844,8 @@ function App() {
           <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
           <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
           <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
+          <Route path='/topcategory' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating}    /> <Footer /></>} />
+          
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}
         </Routes>
       </Router>
