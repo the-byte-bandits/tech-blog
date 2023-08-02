@@ -1102,7 +1102,7 @@ console.log(top3BlogsPerCategoryByRating);
           <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
           <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
           <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
-          <Route path='/top-category' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating}    /> <Footer /></>} />
+          <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating}    /> <Footer /></>} />
           <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
           
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}

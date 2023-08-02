@@ -35,7 +35,7 @@ export default function BlogPage({blog}) {
                 .map(
                   (rating) => `
                     <button class="rating-button" value="${rating}">
-                        <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-star"></i>
                     </button>`
                 )
                 .join('')}
@@ -91,8 +91,8 @@ export default function BlogPage({blog}) {
                 
                 <div className="blog-page-btn">
                     <div>
-                        <button onClick={showRatingAlert}><i class="fa-regular fa-heart"></i></button>
-                        &nbsp;<strong>{rating()}</strong>&nbsp;
+                        <button onClick={showRatingAlert}><i class="fa-regular fa-star"></i></button>
+                        &nbsp;<strong>{parseFloat(rating().toFixed(1))}</strong>&nbsp;
                         <button onClick={()=>document.getElementById('comments-section').scrollIntoView({ behavior: 'smooth' })}><i class="fa-regular fa-comment"></i></button>
                         &nbsp;<strong>{blog.comments.length}</strong>
                     </div>

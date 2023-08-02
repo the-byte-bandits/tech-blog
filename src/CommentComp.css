@@ -7,7 +7,7 @@
     width: 70%;
     margin: 1rem auto;
     background-color: #f3f5f7;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 1rem;
 
     display: flex;
@@ -19,6 +19,8 @@
 .comment-upper{
     display: flex;
     justify-content: space-between;
+
+    align-items: center;
 }
 
 .comment-upper-left{
@@ -31,6 +33,11 @@
 .comment-upper-left>p{
     font-weight: bold;
     margin: 0;
+}
+
+.comment-upper-right>p{
+    font-size: 1rem;
+    margin: 0 !important;
 }
 
 .comment-upper-left>img{
