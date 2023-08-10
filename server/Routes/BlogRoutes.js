@@ -55,4 +55,26 @@ router.delete('/delete-blog/:title', async (req, res) => {
   }
 });
 
+router.put('/update-blog/:title', async (req, res) => {
+  const titleToUpdate = req.params.title;
+  const updateData = req.body; // The updated data for the blog
+
+  try {
+    const updatedBlog = await blogModel.findOneAndUpdate(
+      { title: titleToUpdate },
+      updateData,
+      { new: true }
+    );
+
+    if (!updatedBlog) {
+      return res.status(404).json({ message: 'Blog not found' });
+    }
+
+    res.json({ message: 'Blog updated successfully', updatedBlog });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 module.exports = router;
