@@ -1,5 +1,6 @@
 import './BlogEditor.css';
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import JoditEditor from 'jodit-react';
 import Swal from 'sweetalert2';
 import {
@@ -13,6 +14,8 @@ import ImageUpload from './ImageUpload';
 export default function BlogEditor() {
   const editor = useRef(null);
   const [content, setContent] = useState('');
+  const navigate = useNavigate()
+  
   const [blog, setBlog] = useState({ category: '', title: '', content: '' });
 
   const showInputAlert = () => {
@@ -39,13 +42,40 @@ export default function BlogEditor() {
 
   const PostData = async (e) => {
     e.preventDefault();
-    const { category, title, content } = blog;
-    
+    const { category, title } = blog;
+  
+    // Get the content from the Jodit Editor
+    const editorContent = editor.current.value;
+  
+    const res = await fetch("/write-blog", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        category, title, content: editorContent
+      })
+    });
+  
+    console.log("Response status:", res.status);
+    const data = await res.json();
+    console.log("Response data:", data);
+  
+    if (data.status !== 'success') {
+      window.alert("Invalid Data");
+      
+      console.log("Invalid Data");
+      
+    } else {
+      window.alert("OK Data");
+      console.log("OK Data");
+      navigate('/');
+    }
   };
-
+  
   return (
     <div className="correction blog-editor">
-      <form>
+      <form method="POST">
         <div>
           <div className="blog-dropdown">
             <CDropdown>
@@ -63,7 +93,7 @@ export default function BlogEditor() {
             </CDropdown>
           </div>
           <br />
-          <form method="POST">
+          
             <div className="form-group">
               <input
                 name="title"
@@ -76,13 +106,13 @@ export default function BlogEditor() {
                 onChange={handleInputs}
               />
             </div>
-          </form>
+          
           <br />
           <ImageUpload />
           <br />
           <JoditEditor
             ref={editor}
-            value={content}
+            
             onChange={(newContent) => setContent(newContent)}
             name="content"
             value={blog.content}

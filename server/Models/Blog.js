@@ -17,10 +17,10 @@ const commentSchema = new mongoose.Schema({
 });
 
 const blogSchema = new mongoose.Schema({
-    //id: {type: Number, required: true},
+   // id: {type: Number, required: true},
     title: String,
     category: String,
-    //author: String,
+   // author: String,
     //totViews: Number,
     //currViews: Number,
     //date: String,
@@ -28,6 +28,7 @@ const blogSchema = new mongoose.Schema({
     //coverImg: String,
     //reviews: [reviewSchema],
     //comments: [commentSchema]
+
 });
 
 module.exports = mongoose.model('blog', blogSchema);
