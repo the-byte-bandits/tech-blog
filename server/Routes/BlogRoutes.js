@@ -16,6 +16,10 @@ router.get('/get-all-blogs', async (req, res) => {
 
 router.post('/write-blog', async (req, res) => {
   const { category, title, content } = req.body;
+  console.log(title)
+  console.log(category)
+  console.log(content)
+  
 
   if (!title || !content || !category) {
     return res.status(422).json({ error: "Please provide Blog Title, Content, and Category" });
