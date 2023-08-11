@@ -35,6 +35,8 @@ router.post('/write-blog', async (req, res) => {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
+
+  
 });
 //Delete Blog  data
 // Define the route to delete a blog by its title
@@ -76,5 +78,27 @@ router.put('/update-blog/:title', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+router.post('/bloging', async (req, res) => {
+  const formData = req.body;
+  // Process and save the formData as needed
+  console.log('Received form data:', formData);
+
+  try {
+    // Create a new document using the formData and save it to the database
+    const newBlog = new blogModel(formData);
+    console.log(formData)
+    const savedBlog = await newBlog.save();
+    res.status(201).json(savedBlog); // Use status 201 for successful creation
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+
+
+ 
+
+});
+
 
 module.exports = router;

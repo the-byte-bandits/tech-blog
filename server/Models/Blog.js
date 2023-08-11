@@ -20,11 +20,11 @@ const blogSchema = new mongoose.Schema({
    // id: {type: Number, required: true},
     title: String,
     category: String,
+    content: String,
    // author: String,
     //totViews: Number,
     //currViews: Number,
     //date: String,
-    blog: String,
     //coverImg: String,
     //reviews: [reviewSchema],
     //comments: [commentSchema]

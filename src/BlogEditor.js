@@ -35,47 +35,78 @@ export default function BlogEditor() {
 
   // Data submission / processing 
 
-  const handleInputs = (e) => {
-    const { name, value } = e.target;
-    setBlog({ ...blog, [name]: value });
-  };
+  // const handleInputs = (e) => {
+  //   const { name, value } = e.target;
+  //   setBlog({ ...blog, [name]: value });
+  // };
 
-  const PostData = async (e) => {
-    e.preventDefault();
-    const { category, title } = blog;
+  // const PostData = async (e) => {
+  //   e.preventDefault();
+  //   const { category, title } = blog;
   
-    // Get the content from the Jodit Editor
-    const editorContent = editor.current.value;
+  //   // Get the content from the Jodit Editor
+  //   const editorContent = editor.current.value;
   
-    const res = await fetch("/write-blog", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        category, title, content: editorContent
-      })
+  //   const res = await fetch("/write-blog", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       category, title, content: editorContent
+  //     })
+  //   });
+  
+  //   console.log("Response status:", res.status);
+  //   const data = await res.json();
+  //   console.log("Response data:", data);
+  
+  //   if (data.status !== 'success') {
+  //     window.alert("Invalid Data");
+      
+  //     console.log("Invalid Data");
+      
+  //   } else {
+  //     window.alert("OK Data");
+  //     console.log("OK Data");
+  //     navigate('/');
+  //   }
+  // };
+
+const form = document.getElementById('blogForm');
+const titleInput = form.querySelector('input[name="title"]');
+const categoryDropdown = form.querySelector('.blog-dropdown CDropdown');
+const contentEditor = form.querySelector('.jodit-editor');
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault(); // Prevent default form submission
+
+  const formData = new FormData(form); // Create a FormData object
+
+  // Add the selected category to the FormData object
+  const selectedCategory = categoryDropdown.getAttribute('data-category');
+  formData.append('category', selectedCategory);
+
+  try {
+    const response = await fetch('/bloging', {
+      method: 'POST',
+      body: formData,
     });
-  
-    console.log("Response status:", res.status);
-    const data = await res.json();
-    console.log("Response data:", data);
-  
-    if (data.status !== 'success') {
-      window.alert("Invalid Data");
-      
-      console.log("Invalid Data");
-      
+
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log('Server response:', responseData);
     } else {
-      window.alert("OK Data");
-      console.log("OK Data");
-      navigate('/');
+      console.error('Error:', response.statusText);
     }
-  };
-  
+  } catch (error) {
+    console.error('Fetch error:', error);
+  }
+});
+
   return (
     <div className="correction blog-editor">
-      <form method="POST">
+      <form method="POST" id="blogForm"> 
         <div>
           <div className="blog-dropdown">
             <CDropdown>
