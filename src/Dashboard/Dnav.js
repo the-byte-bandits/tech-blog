@@ -61,6 +61,10 @@ function Dnav({user}) {
         document.getElementById('pending-comments').style.display='block'
     }
 
+    useEffect(()=>{
+        
+    })
+
 
     const updateUserData = async newName => {
         const user={
@@ -108,10 +112,24 @@ function Dnav({user}) {
             updateUserData(name)
           },
         });
-
       };
-
     // <input type="email" id="email" class="swal2-input" placeholder="Email" />
+
+    const handleLogout=async ()=>{
+        setAuthUserInfo(null)
+        await fetch(`http://localhost:5000/logout`,{
+            method: 'POST',
+            authorization: "",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({email: authUserInfo.email})
+        }).then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        })
+        
+    }
 
 
 
@@ -137,7 +155,7 @@ function Dnav({user}) {
                     <button onClick={()=>showProfileUpdateAlert(authUserInfo)}>
                         <i class="fa-solid fa-gear"></i>
                     </button>
-                    <button>Logout <i class="fa-solid fa-right-from-bracket"></i></button>
+                    <button onClick={handleLogout}>Logout <i class="fa-solid fa-right-from-bracket"></i></button>
                 </div>
             </div>
         </div>

@@ -1,9 +1,11 @@
 const bcrypt = require('bcrypt');
 const UserModel = require('../Models/User'); // Import your User model
 const JWT=require('jsonwebtoken')
+const cookieParser = require('cookie-parser');
+
 
 async function logoutController(req, res) {
-    req.headers['authorization']=null;
+    // req.headers['authorization']=null;
 
     // res.clearCookie('access_token');
     res.send({message:'Logged Out'})
