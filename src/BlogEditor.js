@@ -1,7 +1,10 @@
 import './BlogEditor.css';
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import JoditEditor from 'jodit-react';
+import React, { useState, useRef } from "react";
+import JoditEditor from "jodit-react";
+import HTMLReactParser from "html-react-parser";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+import axios from 'axios';
 import Swal from 'sweetalert2';
 import {
   CDropdown,
@@ -13,10 +16,14 @@ import ImageUpload from './ImageUpload';
 
 export default function BlogEditor() {
   const editor = useRef(null);
-  const [content, setContent] = useState('');
-  const navigate = useNavigate()
-  
-  const [blog, setBlog] = useState({ category: '', title: '', content: '' });
+  const [content, setContent] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [blogTitle, setBlogTitle] = useState("");
+
+  const _onSelect = (option) => {
+    console.log("Selected option:", option);
+    // Do something with the selected option if needed
+  };
 
   const showInputAlert = () => {
     Swal.fire({
@@ -27,92 +34,42 @@ export default function BlogEditor() {
       confirmButtonText: 'Submit',
       showLoaderOnConfirm: true,
       preConfirm: (category) => {
-        setBlog({ ...blog, category }); // Set the selected category
+        // Handle the category value here (e.g., save to state, display, etc.)
+        // For this example, we simply display an alert with the entered value.
+
+        console.log(category.value)
       },
-      allowOutsideClick: () => !Swal.isLoading(),
+      allowOutsideClick: () => !Swal.isLoading()
     });
   };
 
-  // Data submission / processing 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-  // const handleInputs = (e) => {
-  //   const { name, value } = e.target;
-  //   setBlog({ ...blog, [name]: value });
-  // };
+    try {
+      const formData = {
+        category: selectedCategory,
+        title: blogTitle,
+        content: content
+      };
 
-  // const PostData = async (e) => {
-  //   e.preventDefault();
-  //   const { category, title } = blog;
-  
-  //   // Get the content from the Jodit Editor
-  //   const editorContent = editor.current.value;
-  
-  //   const res = await fetch("/write-blog", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       category, title, content: editorContent
-  //     })
-  //   });
-  
-  //   console.log("Response status:", res.status);
-  //   const data = await res.json();
-  //   console.log("Response data:", data);
-  
-  //   if (data.status !== 'success') {
-  //     window.alert("Invalid Data");
-      
-  //     console.log("Invalid Data");
-      
-  //   } else {
-  //     window.alert("OK Data");
-  //     console.log("OK Data");
-  //     navigate('/');
-  //   }
-  // };
+      const response = await axios.post('/submit-form', formData);
+      console.log(response.data.message);
 
-const form = document.getElementById('blogForm');
-const titleInput = form.querySelector('input[name="title"]');
-const categoryDropdown = form.querySelector('.blog-dropdown CDropdown');
-const contentEditor = form.querySelector('.jodit-editor');
-
-form.addEventListener('submit', async (event) => {
-  event.preventDefault(); // Prevent default form submission
-
-  const formData = new FormData(form); // Create a FormData object
-
-  // Add the selected category to the FormData object
-  const selectedCategory = categoryDropdown.getAttribute('data-category');
-  formData.append('category', selectedCategory);
-
-  try {
-    const response = await fetch('/bloging', {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (response.ok) {
-      const responseData = await response.json();
-      console.log('Server response:', responseData);
-    } else {
-      console.error('Error:', response.statusText);
+      // Optionally, show a success message to the user
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Handle error, show an error message, etc.
     }
-  } catch (error) {
-    console.error('Fetch error:', error);
-  }
-});
+  };
 
   return (
-    <div className="correction blog-editor">
-      <form method="POST" id="blogForm"> 
+    <div className='correction blog-editor'>
+      <form onSubmit={handleFormSubmit}>
         <div>
           <div className="blog-dropdown">
             <CDropdown>
-              <CDropdownToggle color="secondary">
-                Select Blog Category
-              </CDropdownToggle>
+              <CDropdownToggle color="secondary">Select Blog Category</CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem href="#">Latest Tech</CDropdownItem>
                 <CDropdownItem href="#">AI</CDropdownItem>
@@ -124,40 +81,20 @@ form.addEventListener('submit', async (event) => {
             </CDropdown>
           </div>
           <br />
-          
-            <div className="form-group">
-              <input
-                name="title"
-                type="text"
-                className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter blog title"
-                value={blog.title}
-                onChange={handleInputs}
-              />
-            </div>
-          
+          <div className="form-group">
+            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter blog title" onChange={(e) => setBlogTitle(e.target.value)} />
+          </div>
           <br />
           <ImageUpload />
           <br />
           <JoditEditor
             ref={editor}
-            
+            value={content}
             onChange={(newContent) => setContent(newContent)}
-            name="content"
-            value={blog.content}
           />
-          <div>
-            <input
-              type="submit"
-              name="submit"
-              value="register"
-              onClick={PostData}
-            />
-          </div>
         </div>
+        <button type="submit">Submit</button>
       </form>
     </div>
-  );
+  )
 }

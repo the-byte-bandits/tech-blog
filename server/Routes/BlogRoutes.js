@@ -36,6 +36,14 @@ router.post('/write-blog', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 
+  router.post('/submit-form', (req, res) => {
+    const { category, title, content } = req.body;
+    // Handle the form data here (e.g., save to a database, perform some action, etc.)
+    // You can access the category, title, and content variables here
+  
+    res.json({ message: 'Form submitted successfully' });
+  });
+
   
 });
 //Delete Blog  data
