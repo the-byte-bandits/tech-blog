@@ -1,9 +1,55 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { useNavigate } from 'react-router-dom';
+import { authUserInfoContext } from './Context/MyContext';
+
 function Login() {
+  const navigate = useNavigate();
+  const [responseReceived, setResponseReceived] = useState(false);
+
+  const {authUserInfo, setAuthUserInfo} = useContext(authUserInfoContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    const userData = {
+      email: email,
+      password: password
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log('Response:', responseData);
+
+        setAuthUserInfo(responseData);
+
+        setEmail('');
+        setPassword('');
+
+        setResponseReceived(true);
+        navigate('/dashboard');
+      } else {
+        const responseData = await response.json();
+        alert('Error: '+ responseData.error);
+        console.log('Error:', response);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 
    return (
     <>
@@ -14,7 +60,7 @@ function Login() {
               <div className="card-body p-5 d-flex flex-column align-items-center mx-auto w-100">
                 <h2 className="fw-bold b-2 text-uppercase">Login</h2>
                 <p className="text-white-50 mb-5">Please enter your login and password!</p>
-                <Form onSubmit={()=>{}}>
+                <Form onSubmit={handleFormSubmit}>
                   <Form.Group className="mb-3" controlId="email">
                     <Form.Control
                       value={email}

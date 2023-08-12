@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import './Dnav.css'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import {authUserInfoContext} from '../Context/MyContext'
 
 
 function Dnav({user}) {
+
+    const {authUserInfo, setAuthUserInfo} = useContext(authUserInfoContext);
 
     useEffect(()=>{
         const dashInit=()=>{
@@ -59,15 +62,33 @@ function Dnav({user}) {
     }
 
 
-    const showProfileUpdateAlert = () => {
+    const updateUserData = async newName => {
+        const user={
+            name: newName,
+            email: authUserInfo.email,
+        }
+
+        await fetch(`http://localhost:5000/user-update`,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        }).then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            setAuthUserInfo(data)
+
+        })
+    }
+
+    const showProfileUpdateAlert = ({name,email}) => {
         Swal.fire({
           title: 'Update Profile',
           html: `
-            <p style="padding:1rem; border:1px solid #ccc; border-radius: 1rem;">abc@abc</p>
-            
-            <input type="text" id="name" class="swal2-input" placeholder="Name" />
-            <input type="password" id="password" class="swal2-input" placeholder="Password" />
-            <input type="file" id="profileImage" class="swal2-file" />
+            <p style="padding:1rem; border:1px solid #ccc; border-radius: 1rem;"><strong>Email&nbsp;</strong> ${email}</p>
+            <input type="text" id="name" class="swal2-input" placeholder="Name" value=${name} />
+            <input type="file" id="profileImage" class="swal2-file" accept="image/*" />
           `,
           showCancelButton: true,
           confirmButtonText: 'Save Changes',
@@ -75,16 +96,19 @@ function Dnav({user}) {
           showCloseButton: true,
           preConfirm: () => {
             const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            // const email = document.getElementById('email').value;
+            // const password = document.getElementById('password').value;
             const profileImage = document.getElementById('profileImage').files[0];
             // Code to handle the form data (e.g., send it to the server)
             console.log('Name:', name);
             console.log('Email:', email);
-            console.log('Password:', password);
+            // console.log('Password:', password);
             console.log('Profile Image:', profileImage);
+            
+            updateUserData(name)
           },
         });
+
       };
 
     // <input type="email" id="email" class="swal2-input" placeholder="Email" />
@@ -107,10 +131,10 @@ function Dnav({user}) {
             </div>
             <div className="dashboard-nav-profile">
                 <img src={require('../images/hamster.png')} alt="" />
-                <h1>{user.name}</h1>
-                <p>{user.email}</p>
+                <h1>{authUserInfo.name}</h1>
+                <p>{authUserInfo.email}</p>
                 <div>
-                    <button onClick={showProfileUpdateAlert}>
+                    <button onClick={()=>showProfileUpdateAlert(authUserInfo)}>
                         <i class="fa-solid fa-gear"></i>
                     </button>
                     <button>Logout <i class="fa-solid fa-right-from-bracket"></i></button>

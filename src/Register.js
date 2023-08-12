@@ -2,8 +2,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from "react"
 import { is } from 'date-fns/locale';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const navigate = useNavigate();
+  const [responseReceived, setResponseReceived] = useState(false);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,6 +16,8 @@ function Register() {
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   // const [isTermsValid, setIsTermsValid] = useState(false);
+
+
 
   
   const handleFormSubmit = async (e) => {
@@ -30,8 +36,6 @@ function Register() {
       password: password
     };
 
-    console.log('User data:', userData);
-
     try {
       const response = await fetch('http://localhost:5000/register', {
         method: 'POST',
@@ -48,13 +52,23 @@ function Register() {
         setName('');
         setEmail('');
         setPassword('');
+
+        setResponseReceived(true);
+        
       } else {
-        console.error('Error:', response.statusText);
+        const responseData = await response.json();
+        alert('Error: '+ responseData.error);
+        console.error('Error>>:', response.json());
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error>:', error);
     }
   };
+
+  // Redirect to the login page if the response has been received
+  if (responseReceived) {
+    navigate('/login'); // Replace with the correct login route
+  }
 
   return (
     <>
