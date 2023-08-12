@@ -63,8 +63,9 @@ function Dnav({user}) {
         Swal.fire({
           title: 'Update Profile',
           html: `
+            <p style="padding:1rem; border:1px solid #ccc; border-radius: 1rem;">abc@abc</p>
+            
             <input type="text" id="name" class="swal2-input" placeholder="Name" />
-            <input type="email" id="email" class="swal2-input" placeholder="Email" />
             <input type="password" id="password" class="swal2-input" placeholder="Password" />
             <input type="file" id="profileImage" class="swal2-file" />
           `,
@@ -86,7 +87,7 @@ function Dnav({user}) {
         });
       };
 
-    
+    // <input type="email" id="email" class="swal2-input" placeholder="Email" />
 
 
 

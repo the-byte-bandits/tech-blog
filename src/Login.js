@@ -34,21 +34,6 @@ function Login() {
                   </Form.Group>
                   <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!">Forgot password?</a></p>
                   <Button className="mb-4 w-100" variant="outline-light" type="submit" value="Login">Login</Button>
-
-                  {/* <div className='d-flex flex-row mt-3 mb-5'>
-                    <Button tag='a' className='m-3' style={{ color: 'white', backgroundColor: 'black', border: 'none' }}>
-                      <i className="fa-brands fa-facebook"></i>
-                    </Button>
-
-                    <Button tag='a' className='m-3' style={{ color: 'white', backgroundColor: 'black', border: 'none' }}>
-                      <i className="fa-brands fa-twitter"></i>
-                    </Button>
-
-                    <Button tag='a' className='m-3' style={{ color: 'white', backgroundColor: 'black', border: 'none' }}>
-                      <i className="fa-brands fa-google"></i>
-                    </Button>
-                  </div> */}
-
                   <div>
                     <p className="mb-0">Don't have an account? <a href="/register" className="text-white-50 fw-bold">Sign Up</a></p>
 
