@@ -1,10 +1,9 @@
-import './BlogEditor.css';
+import './BlogEditor.css'
 import React, { useState, useRef } from "react";
 import JoditEditor from "jodit-react";
 import HTMLReactParser from "html-react-parser";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import {
   CDropdown,
@@ -17,8 +16,22 @@ import ImageUpload from './ImageUpload';
 export default function BlogEditor() {
   const editor = useRef(null);
   const [content, setContent] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [blogTitle, setBlogTitle] = useState("");
+
+  const handleEditorChange = (newContent) => {
+    // Perform any necessary operations with the newContent here
+    // For example, you can send it to a function
+    const contentWithoutPTag = newContent.replace(/<p>/g, '').replace(/<\/p>/g, '');
+
+    sendDataToFunction(contentWithoutPTag);
+
+    // Update the state with the new content
+    setContent(newContent);
+  };
+
+  const sendDataToFunction = (data) => {
+    // Implement your logic to send the data to the desired function
+    console.log('Sending data:', data);
+  };
 
   const _onSelect = (option) => {
     console.log("Selected option:", option);
@@ -36,65 +49,76 @@ export default function BlogEditor() {
       preConfirm: (category) => {
         // Handle the category value here (e.g., save to state, display, etc.)
         // For this example, we simply display an alert with the entered value.
-
-        console.log(category.value)
+        
       },
       allowOutsideClick: () => !Swal.isLoading()
     });
   };
+  const [selectedValue, setSelectedValue] = useState("");
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
 
-    try {
-      const formData = {
-        category: selectedCategory,
-        title: blogTitle,
-        content: content
-      };
 
-      const response = await axios.post('/submit-form', formData);
-      console.log(response.data.message);
+  const handleDropdownSelect = (value) => {
+    setSelectedValue(value);
+    // Do something with the selected value
+     console.log("Selected Value:", value);
+};
 
-      // Optionally, show a success message to the user
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      // Handle error, show an error message, etc.
-    }
-  };
+
+
+const handleForm=(e)=>{
+  console.log(e.target.name)
+}
 
   return (
     <div className='correction blog-editor'>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <div className="blog-dropdown">
-            <CDropdown>
-              <CDropdownToggle color="secondary">Select Blog Category</CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem href="#">Latest Tech</CDropdownItem>
-                <CDropdownItem href="#">AI</CDropdownItem>
-                <CDropdownItem href="#">Programming</CDropdownItem>
-                <CDropdownItem href="#">Mobiles</CDropdownItem>
-                <CDropdownItem href="#">Laptops</CDropdownItem>
-                <CDropdownItem onClick={showInputAlert}>Others</CDropdownItem>
-              </CDropdownMenu>
+      <form>
+            <div>
+                <div className="blog-dropdown">
+
+                     {/* <CDropdown defaultValue={""} >
+                        <CDropdownToggle color="secondary">Select Blog Category</CDropdownToggle>
+                        <CDropdownMenu>
+                            <CDropdownItem href="#">Latest Tech</CDropdownItem>
+                            <CDropdownItem href="#">AI</CDropdownItem>
+                            <CDropdownItem href="#">Programming</CDropdownItem>
+                            <CDropdownItem href="#">Mobiles</CDropdownItem>
+                            <CDropdownItem href="#">Laptops</CDropdownItem>
+                            <CDropdownItem onClick={showInputAlert}>Others</CDropdownItem>
+                        </CDropdownMenu>
+                    </CDropdown>  */}
+                          <CDropdown defaultValue={""}>
+                <CDropdownToggle name="BlogCategory" color="secondary">Select Blog Category</CDropdownToggle>
+                <CDropdownMenu>
+                    <CDropdownItem onClick={() => handleDropdownSelect("Latest Tech")}>Latest Tech</CDropdownItem>
+                    <CDropdownItem onClick={() => handleDropdownSelect("AI")}>AI</CDropdownItem>
+                    <CDropdownItem onClick={() => handleDropdownSelect("Programming")}>Programming</CDropdownItem>
+                    <CDropdownItem onClick={() => handleDropdownSelect("Mobiles")}>Mobiles</CDropdownItem>
+                    <CDropdownItem onClick={() => handleDropdownSelect("Laptops")}>Laptops</CDropdownItem>
+                    {/* <CDropdownItem onClick={showInputAlert}>Others</CDropdownItem> */}
+                </CDropdownMenu>
             </CDropdown>
-          </div>
-          <br />
-          <div className="form-group">
-            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter blog title" onChange={(e) => setBlogTitle(e.target.value)} />
-          </div>
-          <br />
-          <ImageUpload />
-          <br />
-          <JoditEditor
-            ref={editor}
-            value={content}
-            onChange={(newContent) => setContent(newContent)}
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+  
+                </div>
+                <br />
+                
+                    <div className="form-group">
+                        <input name="BlogTitle" onChange={handleForm} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter blog title" />
+                    </div>
+                
+                <br />
+                <ImageUpload/>
+                <br />
+                <JoditEditor
+                name="BlogEditor"
+                    ref={editor}
+                    value={content}
+                    onChange={handleEditorChange}
+                />
+
+                {/* <div>{HTMLReactParser(content)}</div> */}
+            </div>
+            <button  type="submit" class="btn btn-primary mt-6 pt-2">Primary</button>
+        </form>
     </div>
-  )
-}
+)}
