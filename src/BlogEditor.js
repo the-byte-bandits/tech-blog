@@ -16,23 +16,9 @@ import ImageUpload from './ImageUpload';
 export default function BlogEditor() {
   const editor = useRef(null);
   const [content, setContent] = useState("");
+  const [selectedValue, setSelectedValue] = useState("");
 
-  const handleEditorChange = (newContent) => {
-    // Perform any necessary operations with the newContent here
-    // For example, you can send it to a function
-    const contentWithoutPTag = newContent.replace(/<p>/g, '').replace(/<\/p>/g, '');
-
-    sendDataToFunction(contentWithoutPTag);
-
-    // Update the state with the new content
-    setContent(newContent);
-  };
-
-  const sendDataToFunction = (data) => {
-    // Implement your logic to send the data to the desired function
-    console.log('Sending data:', data);
-  };
-
+  
   const _onSelect = (option) => {
     console.log("Selected option:", option);
     // Do something with the selected option if needed
@@ -54,40 +40,77 @@ export default function BlogEditor() {
       allowOutsideClick: () => !Swal.isLoading()
     });
   };
-  const [selectedValue, setSelectedValue] = useState("");
+  
+  
+
+  const handleEditorChange = (newContent) => {
+    // Perform any necessary operations with the newContent here
+    // For example, you can send it to a function
+    const contentWithoutPTag = newContent.replace(/<p>/g, '').replace(/<\/p>/g, '');
+
+    sendDataToFunction(contentWithoutPTag);
+
+    // Update the state with the new content
+    setContent(newContent);
+  };
+
+  const sendDataToFunction = (data) => {
+    // Implement your logic to send the data to the desired function
+    console.log('Sending data:', data);
+  };
 
 
 
   const handleDropdownSelect = (value) => {
-    setSelectedValue(value);
-    // Do something with the selected value
-     console.log("Selected Value:", value);
-};
+      setSelectedValue(value);
+      // Do something with the selected value
+      console.log("Selected Value:", value);
+
+    };
 
 
 
 const handleForm=(e)=>{
   console.log(e.target.name)
+
 }
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData(); // Create a FormData object to store form data
+
+  // Add form data to the FormData object
+  
+  console.log( e.target.elements.BlogTitle.value)
+  console.log(content)
+  console.log(selectedValue)
+  formData.append('blogTitle', e.target.elements.BlogTitle.value);
+  formData.append('blogContent', content);
+  formData.append('blogCategory', selectedValue);
+
+  
+   try {
+    const response = await fetch('http://localhost:5000/FormData', {
+      method: 'POST', // Use POST method to send data
+      body: formData, // Set the form data as the request body
+    });
+
+    const data = await response.text();
+    console.log(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
 
   return (
     <div className='correction blog-editor'>
-      <form>
+      <form onSubmit={handleSubmit}>
             <div>
                 <div className="blog-dropdown">
 
-                     {/* <CDropdown defaultValue={""} >
-                        <CDropdownToggle color="secondary">Select Blog Category</CDropdownToggle>
-                        <CDropdownMenu>
-                            <CDropdownItem href="#">Latest Tech</CDropdownItem>
-                            <CDropdownItem href="#">AI</CDropdownItem>
-                            <CDropdownItem href="#">Programming</CDropdownItem>
-                            <CDropdownItem href="#">Mobiles</CDropdownItem>
-                            <CDropdownItem href="#">Laptops</CDropdownItem>
-                            <CDropdownItem onClick={showInputAlert}>Others</CDropdownItem>
-                        </CDropdownMenu>
-                    </CDropdown>  */}
-                          <CDropdown defaultValue={""}>
+                <CDropdown defaultValue={""}>
                 <CDropdownToggle name="BlogCategory" color="secondary">Select Blog Category</CDropdownToggle>
                 <CDropdownMenu>
                     <CDropdownItem onClick={() => handleDropdownSelect("Latest Tech")}>Latest Tech</CDropdownItem>

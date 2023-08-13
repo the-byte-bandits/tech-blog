@@ -2,7 +2,11 @@ const express = require("express");
 const blogModel = require("../Models/Blog");
 const mongoose = require('mongoose');
 const router = express.Router();
+const cors=require("cors")
 
+const app= express();
+
+app.use(cors());
 // Define the route to get all blogs
 router.get('/get-allblogs', async (req, res) => {
   try {
@@ -87,26 +91,26 @@ router.put('/update-blog/:title', async (req, res) => {
   }
 });
 
-router.post('/bloging', async (req, res) => {
-  const formData = req.body;
-  // Process and save the formData as needed
-  console.log('Received form data:', formData);
+// Handle POST request to /FormData
+router.post('/FormData', (req, res) => {
+  const { blogTitle, blogContent, blogCategory } = req.body;
+  console.log('Received data:', {
+    blogTitle,
+    blogContent,
+    blogCategory,
+  });
 
-  try {
-    // Create a new document using the formData and save it to the database
-    const newBlog = new blogModel(formData);
-    console.log(formData)
-    const savedBlog = await newBlog.save();
-    res.status(201).json(savedBlog); // Use status 201 for successful creation
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-
-
- 
-
+  // Respond with a simple message
+  res.send('Data received successfully!');
 });
+
+const PORT = process.env.PORT || 5001;
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
+
 
 
 module.exports = router;
