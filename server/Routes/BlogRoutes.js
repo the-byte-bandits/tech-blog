@@ -2,11 +2,13 @@ const express = require("express");
 const blogModel = require("../Models/Blog");
 const mongoose = require('mongoose');
 const router = express.Router();
-const cors=require("cors")
+const cors = require('cors'); // Import the cors package
 
 const app= express();
 
-app.use(cors());
+
+app.use(cors()); // Use the cors middleware
+app.use(express.json());
 // Define the route to get all blogs
 router.get('/get-allblogs', async (req, res) => {
   try {
@@ -20,6 +22,8 @@ router.get('/get-allblogs', async (req, res) => {
 });
 
 //write a Blog 
+
+
 router.post('/write-blog', async (req, res) => {
   const { selectedCategory, title, content,Base64 } = req.body;
   console.log(title)
