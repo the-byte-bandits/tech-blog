@@ -21,18 +21,18 @@ router.get('/get-allblogs', async (req, res) => {
 
 //write a Blog 
 router.post('/write-blog', async (req, res) => {
-  const { selectedCategory, title, content } = req.body;
+  const { selectedCategory, title, content,Base64 } = req.body;
   console.log(title)
   console.log(selectedCategory)
   console.log(content)
   
  
-  if (!title || !content || !selectedCategory) {
+  if (!title || !content || !selectedCategory||!Base64) {
     return res.status(422).json({ error: "Please provide Blog Title, Content, and Category" });
   }
 
   try {
-    const newBlog = new blogModel({ selectedCategory, title, content });
+    const newBlog = new blogModel({ selectedCategory, title, content,Base64 });
     const savedBlog = await newBlog.save();
     res.json(savedBlog);
   } catch (error) {

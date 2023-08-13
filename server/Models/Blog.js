@@ -21,6 +21,7 @@ const blogSchema = new mongoose.Schema({
     title: String,
     selectedCategory: String,
     content: String,
+    Base64:String
    // author: String,
     //totViews: Number,
     //currViews: Number,
