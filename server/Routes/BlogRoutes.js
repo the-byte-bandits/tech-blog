@@ -21,18 +21,18 @@ router.get('/get-allblogs', async (req, res) => {
 
 //write a Blog 
 router.post('/write-blog', async (req, res) => {
-  const { category, title, content } = req.body;
+  const { selectedCategory, title, content } = req.body;
   console.log(title)
-  console.log(category)
+  console.log(selectedCategory)
   console.log(content)
   
  
-  if (!title || !content || !category) {
+  if (!title || !content || !selectedCategory) {
     return res.status(422).json({ error: "Please provide Blog Title, Content, and Category" });
   }
 
   try {
-    const newBlog = new blogModel({ category, title, content });
+    const newBlog = new blogModel({ selectedCategory, title, content });
     const savedBlog = await newBlog.save();
     res.json(savedBlog);
   } catch (error) {
@@ -91,18 +91,6 @@ router.put('/update-blog/:title', async (req, res) => {
   }
 });
 
-// Handle POST request to /FormData
-router.post('/FormData', (req, res) => {
-  const { blogTitle, blogContent, blogCategory } = req.body;
-  console.log('Received data:', {
-    blogTitle,
-    blogContent,
-    blogCategory,
-  });
-
-  // Respond with a simple message
-  res.send('Data received successfully!');
-});
 
 const PORT = process.env.PORT || 5001;
 

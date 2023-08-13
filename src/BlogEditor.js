@@ -15,10 +15,47 @@ import ImageUpload from './ImageUpload';
 
 export default function BlogEditor() {
   const editor = useRef(null);
-  const [content, setContent] = useState("");
-  const [selectedValue, setSelectedValue] = useState("");
+  // const [content, setContent] = useState("");
 
-  
+
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
+
+  const handleDropdownSelect = (value) => {
+    setSelectedCategory(value)
+   
+    console.log("Selected :",selectedCategory);
+
+  };
+  const handleButtonClick = () => {
+    console.log('Category:',selectedCategory);
+    console.log('Title:', title);
+    console.log('Content:', content);
+
+    const dataToSend = {
+        selectedCategory:selectedCategory,
+        title: title,
+        content: content
+    };
+
+    fetch('http://localhost:3000/write-blog', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data sent successfully:', data);
+    })
+    .catch(error => {
+        console.error('Error sending data:', error);
+    });
+};
+
   const _onSelect = (option) => {
     console.log("Selected option:", option);
     // Do something with the selected option if needed
@@ -40,77 +77,18 @@ export default function BlogEditor() {
       allowOutsideClick: () => !Swal.isLoading()
     });
   };
-  
-  
 
-  const handleEditorChange = (newContent) => {
-    // Perform any necessary operations with the newContent here
-    // For example, you can send it to a function
-    const contentWithoutPTag = newContent.replace(/<p>/g, '').replace(/<\/p>/g, '');
-
-    sendDataToFunction(contentWithoutPTag);
-
-    // Update the state with the new content
-    setContent(newContent);
-  };
-
-  const sendDataToFunction = (data) => {
-    // Implement your logic to send the data to the desired function
-    console.log('Sending data:', data);
-  };
-
-
-
-  const handleDropdownSelect = (value) => {
-      setSelectedValue(value);
-      // Do something with the selected value
-      console.log("Selected Value:", value);
-
-    };
-
-
-
-const handleForm=(e)=>{
-  console.log(e.target.name)
-
-}
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  
-  const formData = new FormData(); // Create a FormData object to store form data
-
-  // Add form data to the FormData object
-  
-  console.log( e.target.elements.BlogTitle.value)
-  console.log(content)
-  console.log(selectedValue)
-  formData.append('blogTitle', e.target.elements.BlogTitle.value);
-  formData.append('blogContent', content);
-  formData.append('blogCategory', selectedValue);
-
-  
-   try {
-    const response = await fetch('http://localhost:5000/FormData', {
-      method: 'POST', // Use POST method to send data
-      body: formData, // Set the form data as the request body
-    });
-
-    const data = await response.text();
-    console.log(data);
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
 
 
   return (
     <div className='correction blog-editor'>
-      <form onSubmit={handleSubmit}>
-            <div>
-                <div className="blog-dropdown">
 
-                <CDropdown defaultValue={""}>
+    
+
+<form>
+      <div>
+        <div className="blog-dropdown">
+        <CDropdown defaultValue={""}>
                 <CDropdownToggle name="BlogCategory" color="secondary">Select Blog Category</CDropdownToggle>
                 <CDropdownMenu>
                     <CDropdownItem onClick={() => handleDropdownSelect("Latest Tech")}>Latest Tech</CDropdownItem>
@@ -121,27 +99,29 @@ const handleSubmit = async (e) => {
                     {/* <CDropdownItem onClick={showInputAlert}>Others</CDropdownItem> */}
                 </CDropdownMenu>
             </CDropdown>
-  
-                </div>
-                <br />
-                
-                    <div className="form-group">
-                        <input name="BlogTitle" onChange={handleForm} type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter blog title" />
-                    </div>
-                
-                <br />
-                <ImageUpload/>
-                <br />
-                <JoditEditor
-                name="BlogEditor"
-                    ref={editor}
-                    value={content}
-                    onChange={handleEditorChange}
-                />
-
-                {/* <div>{HTMLReactParser(content)}</div> */}
-            </div>
-            <button  type="submit" class="btn btn-primary mt-6 pt-2">Primary</button>
+        </div>
+        <br />
+        <form>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter blog title"
+            />
+          </div>
         </form>
+        <br />
+        <br />
+        <JoditEditor
+          value={content}
+          onChange={(newContent) => setContent(newContent)}
+        />
+      </div>
+      <button type="button" onClick={handleButtonClick}>
+        Log Form Data
+      </button>
+    </form>
     </div>
 )}

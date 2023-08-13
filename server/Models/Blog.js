@@ -19,7 +19,7 @@ const commentSchema = new mongoose.Schema({
 const blogSchema = new mongoose.Schema({
    // id: {type: Number, required: true},
     title: String,
-    category: String,
+    selectedCategory: String,
     content: String,
    // author: String,
     //totViews: Number,
