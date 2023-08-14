@@ -3,6 +3,9 @@ const blogModel = require("../Models/Blog");
 const mongoose = require('mongoose');
 const router = express.Router();
 const cors = require('cors'); // Import the cors package
+const { v4: uuidv4 } = require('uuid');
+
+ // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
 
 const app= express();
 
@@ -21,28 +24,24 @@ router.get('/get-allblogs', async (req, res) => {
   }
 });
 
-router.get('/getdata',(req,res)=>{
-  blogModel.find().then(data=>res.json(data))
-  .catch(err=>res.json(err))
-})
-
 
 //write a Blog 
 
 
 router.post('/write-blog', async (req, res) => {
   const { selectedCategory, title, content,Base64 } = req.body;
+  const BID=uuidv4();
   console.log(title)
   console.log(selectedCategory)
   console.log(content)
-  
- 
+  console.log(BID)
+  const id=BID;
   if (!title || !content || !selectedCategory||!Base64) {
     return res.status(422).json({ error: "Please provide Blog Title, Content, and Category" });
   }
 
   try {
-    const newBlog = new blogModel({ selectedCategory, title, content,Base64 });
+    const newBlog = new blogModel({id,selectedCategory, title, content,Base64 });
     const savedBlog = await newBlog.save();
     res.json(savedBlog);
   } catch (error) {

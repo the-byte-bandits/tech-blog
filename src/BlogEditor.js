@@ -71,7 +71,14 @@ reader.onerror=error=>{
     .catch(error => {
         console.error('Error sending data:', error);
     });
-};
+    Swal.fire(
+      'Blog Data Added',
+      'New Blog Added',
+      'success'
+    )
+
+
+  };
 
   const _onSelect = (option) => {
     console.log("Selected option:", option);
@@ -87,8 +94,8 @@ reader.onerror=error=>{
       confirmButtonText: 'Submit',
       showLoaderOnConfirm: true,
       preConfirm: (category) => {
-        // Handle the category value here (e.g., save to state, display, etc.)
-        // For this example, we simply display an alert with the entered value.
+        
+    setSelectedCategory(category);
         
       },
       allowOutsideClick: () => !Swal.isLoading()

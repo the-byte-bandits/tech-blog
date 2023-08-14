@@ -15,25 +15,7 @@
     console.log(blogs);
   },[])
   
-    // useEffect(() => {
-    //   const fetchBlogs = async () => {
-    //     try {
-    //       console.log('Fetching blogs...');
-    //       const response = await fetch('http://localhost:5000/get-allblogs');
-    //       const data = await response.json();
-      
-    //       console.log('Blogs fetched:', data);
-    //       setBlogs(data);
-
-        
-    //     } catch (error) {
-    //       console.error('Error fetching blogs:', error);
-    //     }
-    //   };
-
-    //   fetchBlogs();
-    // }, []);
-
+    
     
     return (
       <div className='dashboard'>
@@ -42,8 +24,8 @@
             
             <Dscreen 
               id={'dashboard'}
-              th={['ID','Title','Category','Tot. Views','Curr. Views','Date','Actions']}
-              td={blogs}        
+              th={['ID','Title','Category','Cover','Actions']}
+              td={blogs}   
             
             />
             <Dscreen 
