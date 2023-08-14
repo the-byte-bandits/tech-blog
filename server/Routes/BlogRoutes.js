@@ -21,6 +21,12 @@ router.get('/get-allblogs', async (req, res) => {
   }
 });
 
+router.get('/getdata',(req,res)=>{
+  blogModel.find().then(data=>res.json(data))
+  .catch(err=>res.json(err))
+})
+
+
 //write a Blog 
 
 
