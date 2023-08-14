@@ -2,26 +2,13 @@ import React from 'react'
 import './BlogPage.css'
 import CommentsSection from './CommentsSection'
 import Swal from 'sweetalert2';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { format } from 'date-fns';
 
 
 export default function BlogPage({blog}) {
 
-    // useEffect(()=>{
-    //     const ratingBtnInit=()=>{
-    //         document.querySelectorAll('.rating-button').forEach((button) => {
-    //         button.addEventListener('click', (event) => {
-    //           document.querySelectorAll('.rating-button').forEach((btn) => {
-    //             btn.classList.remove('clicked');
-    //           });
-    //           event.target.classList.add('clicked');
-    //         });
-    //       });
-    //     }
-
-    //     ratingBtnInit()
-    // },[])
+  const [blogRating, setBlogRating] = useState(0);
 
     const showRatingAlert = () => {
         const ratings = [1, 2, 3, 4, 5];
@@ -52,6 +39,7 @@ export default function BlogPage({blog}) {
         }).then((result) => {
           if (result.isConfirmed && result.value !== null) {
             console.log('Rating:', result.value);
+            setBlogRating(result.value)
           }
         });
 

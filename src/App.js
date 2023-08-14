@@ -1,7 +1,5 @@
 import 'https://kit.fontawesome.com/9c1c3f6a2e.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Container from './adminComponents/Container/Container';
-// import Menu from './adminComponents/SideMenu/Menu';
 import { BrowserRouter as Router, Routes, Route, Link, useParams} from "react-router-dom";
 import AboutUs from './About';
 import ContactUs from './ContactUs';
@@ -14,14 +12,18 @@ import Register from './Register';
 import BlogEditor from './BlogEditor';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
-// import Dashboard from './Dashboard';
 import TermsOfService from './TermsOfService';
 import Dashboardd from './Dashboard/Dashboardd';
 import Error from './404/Error';
 import TopCategory from './topCategory';
 
+import {authUserInfoContext} from './Context/MyContext';
+import { useState } from 'react';
+
 
 function App() {
+
+  const [authUserInfo, setAuthUserInfo] = useState(null);
 
   const user={
     id:1,
@@ -1084,30 +1086,31 @@ function calculateAverageRating(reviews) {
 // Call the function with the allBlogss array
 const top3BlogsPerCategoryByRating = extractTop3BlogsPerCategoryByRating(allBlogss);
 
-console.log(top3BlogsPerCategoryByRating);
-
-
-
   return (
     <div className="app">
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route path='/' element={<><Navbarr /><MainBlog allBlogs={allBlogss}/><Footer /></>}/>
-          <Route path='/blog/*' element={<><Navbarr /><BlogPageWithDetails /><Footer /></>}/>
-          <Route path='/contact-us' element={<><Navbarr /><ContactUs /><Footer /></>} />
-          <Route path='/about-us' element={<><Navbarr /><AboutUs /><Footer /></>} />
-          <Route path='/terms-of-service' element={<><Navbarr /><TermsOfService /><Footer /></>} />
-          <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
-          <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
-          <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
-          <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
-          <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating}    /> <Footer /></>} />
-          <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
-          
-          {/* <Route path='/dashboard' element={<Dashboard />} /> */}
-        </Routes>
-      </Router>
+      <authUserInfoContext.Provider value={{ authUserInfo, setAuthUserInfo }}>
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            <Route path='/' element={<><Navbarr /><MainBlog allBlogs={allBlogss}/><Footer /></>}/>
+            <Route path='/blog/*' element={<><Navbarr /><BlogPageWithDetails /><Footer /></>}/>
+            <Route path='/contact-us' element={<><Navbarr /><ContactUs /><Footer /></>} />
+            <Route path='/about-us' element={<><Navbarr /><AboutUs /><Footer /></>} />
+            <Route path='/terms-of-service' element={<><Navbarr /><TermsOfService /><Footer /></>} />
+            
+            <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
+            {
+              authUserInfo &&  
+              <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
+            }
+            
+            <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
+            <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
+            <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating}    /> <Footer /></>} />
+            <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />          
+          </Routes>
+        </Router>
+      </authUserInfoContext.Provider>
     </div>
   );
 }

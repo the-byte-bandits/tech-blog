@@ -13,16 +13,27 @@ import {
 } from '@coreui/react';
 import ImageUpload from './ImageUpload';
 
-
-
-
-
-
-
 export default function BlogEditor() {
   const editor = useRef(null);
-  const [content, setContent] = useState("");
+  // const [content, setContent] = useState("");
 
+
+
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
+
+  const handleButtonClick = () => {
+    console.log('Selected Category:', selectedCategory);
+    console.log('Title:', title);
+    console.log('Content:', content);
+  };
   
 
 
@@ -55,38 +66,46 @@ export default function BlogEditor() {
 
     
 
-      <form>
-            <div >
-                <div className="blog-dropdown">
-                    <CDropdown>
-                        <CDropdownToggle color="secondary">Select Blog Category</CDropdownToggle>
-                        <CDropdownMenu>
-                            <CDropdownItem href="#">Latest Tech</CDropdownItem>
-                            <CDropdownItem href="#">AI</CDropdownItem>
-                            <CDropdownItem href="#">Programming</CDropdownItem>
-                            <CDropdownItem href="#">Mobiles</CDropdownItem>
-                            <CDropdownItem href="#">Laptops</CDropdownItem>
-                            <CDropdownItem onClick={showInputAlert}>Others</CDropdownItem>
-                        </CDropdownMenu>
-                    </CDropdown>
-                </div>
-                <br />
-                <form>
-                    <div className="form-group">
-                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter blog title" />
-                    </div>
-                </form>
-                <br />
-                <ImageUpload />
-                <br />
-                <JoditEditor
-                    ref={editor}
-                    value={content}
-                    onChange={(newContent) => setContent(newContent)}
-                />
-
-                {/* <div>{HTMLReactParser(content)}</div> */}
-            </div>
+<form>
+      <div>
+        <div className="blog-dropdown">
+          <CDropdown>
+            <CDropdownToggle color="secondary">
+              Select Blog Category
+            </CDropdownToggle>
+            <CDropdownMenu>
+              <CDropdownItem onClick={() => handleCategorySelect('Latest Tech')}>
+                Latest Tech
+              </CDropdownItem>
+              <CDropdownItem onClick={() => handleCategorySelect('AI')}>
+                AI
+              </CDropdownItem>
+              {/* ... Other dropdown items */}
+            </CDropdownMenu>
+          </CDropdown>
+        </div>
+        <br />
+        <form>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter blog title"
+            />
+          </div>
         </form>
+        <br />
+        <br />
+        <JoditEditor
+          value={content}
+          onChange={(newContent) => setContent(newContent)}
+        />
+      </div>
+      <button type="button" onClick={handleButtonClick}>
+        Log Form Data
+      </button>
+    </form>
     </div>
 )}

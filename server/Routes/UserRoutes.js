@@ -1,26 +1,18 @@
 const express = require("express");
 const UserModel = require("../Models/User");
-const mongoose = require('mongoose');
 const router = express.Router();
+const bcrypt = require('bcrypt')
+const { body, validationResult } = require('express-validator');
+const { checkEmailAndPassword, validateRegistrationData, checkAuth } = require('../Middleware/middlewares'); // Import your middleware functions
+const { loginController, registerController, dashboradController, logoutController, updateUserController } = require('../Controller/controllers'); // Import your controller functions
 
-router.post("/register", async (req, res) => {
 
-    try{
-        const { name, email, password, img } = req.body;
+router.patch('/user-update', updateUserController)
+router.post("/register", validateRegistrationData , registerController);
+router.post("/login", checkEmailAndPassword, loginController)
+router.get('/dashboard',checkAuth,dashboradController)
+router.post('/logout',logoutController);
 
-        const user=new UserModel({
-            name,
-            email,
-            password,
-            img
-        })
-    
-        await user.save();
-        res.status(201).json(user);
-    } catch (err) {
-        res.status(500).json({ error: 'Failed to create user' });
-    }
-
-});
+// router.post('/user/update', )
 
 module.exports = router;
