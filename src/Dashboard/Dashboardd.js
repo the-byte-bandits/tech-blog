@@ -4,18 +4,7 @@
   import Dscreen from './Dscreen'
   import axios from 'axios';
 
-  export default function Dashboardd({user,allBlogs}) {
-
-    const [blogs, setBlogs] = useState([]);
-  
-  useEffect(()=>{
-    axios.get('http://localhost:5000/getdata')
-    .then(blogs=>setBlogs(blogs.data))
-    .catch(err=>console.log(err))
-    console.log(blogs);
-  },[])
-  
-    
+  export default function Dashboardd({user,allBlogs}) { 
     
     return (
       <div className='dashboard'>
@@ -25,7 +14,7 @@
             <Dscreen 
               id={'dashboard'}
               th={['ID','Title','Category','Cover','Actions']}
-              td={blogs}   
+              td={allBlogs}   
             
             />
             <Dscreen 

@@ -17,8 +17,6 @@ import { convertLength } from '@mui/material/styles/cssUtils';
 export default function BlogEditor() {
   const editor = useRef(null);
   
-
-
   const [selectedCategory, setSelectedCategory] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -57,7 +55,7 @@ reader.onerror=error=>{
         Base64:image
     };
 
-    fetch('http://localhost:3000/write-blog', {
+    fetch('http://localhost:5000/write-blog', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

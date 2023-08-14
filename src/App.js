@@ -19,7 +19,8 @@ import TermsOfService from './TermsOfService';
 import Dashboardd from './Dashboard/Dashboardd';
 import Error from './404/Error';
 import TopCategory from './topCategory';
-
+import { useState,useEffect } from 'react';
+import axios from 'axios'; 
 
 function App() {
 
@@ -1085,6 +1086,28 @@ function calculateAverageRating(reviews) {
 const top3BlogsPerCategoryByRating = extractTop3BlogsPerCategoryByRating(allBlogss);
 
 console.log(top3BlogsPerCategoryByRating);
+
+
+// //Fetching Data
+ const [blogs, setBlogs] = useState([]);
+  
+// useEffect(()=>{
+//   axios.get('http://localhost:5000/getdata')
+//   .then(blogs=>setBlogs(blogs.data))
+//   .catch(err=>console.log(err))
+//   console.log(blogs);
+// },[])
+
+useEffect(() => {
+  fetch('http://localhost:5000/get-allblogs')
+    .then(response => response.json())
+    .then(data => setBlogs(data))
+    .catch(error => console.log(error));
+
+    
+    
+}, []);
+
 
 
 

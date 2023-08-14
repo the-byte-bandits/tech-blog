@@ -5,21 +5,20 @@ const router = express.Router();
 const cors = require('cors'); // Import the cors package
 const { v4: uuidv4 } = require('uuid');
 
- // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
-
+ 
 const app= express();
 
 
 app.use(cors()); // Use the cors middleware
 app.use(express.json());
 // Define the route to get all blogs
+
 router.get('/get-allblogs', async (req, res) => {
   try {
     const blogs = await blogModel.find();
-    res.json(blogs);
+    res.json(blogs)
   } catch (error) {
     console.error(error);
-
     res.status(500).json({ message: 'Internal server error' });
   }
 });
