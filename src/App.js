@@ -1111,6 +1111,25 @@ const top3BlogsPerCategoryByRating = extractTop3BlogsPerCategoryByRating(allBlog
           </Routes>
         </Router>
       </authUserInfoContext.Provider>
+=======
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path='/' element={<><Navbarr /><MainBlog allBlogs={allBlogss}/><Footer /></>}/>
+          <Route path='/blog/*' element={<><Navbarr /><BlogPageWithDetails /><Footer /></>}/>
+          <Route path='/contact-us' element={<><Navbarr /><ContactUs /><Footer /></>} />
+          <Route path='/about-us' element={<><Navbarr /><AboutUs /><Footer /></>} />
+          <Route path='/terms-of-service' element={<><Navbarr /><TermsOfService /><Footer /></>} />
+          <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
+          <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
+          <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
+          <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
+          <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating} /> <Footer /></>} />
+          <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
+          
+          {/* <Route path='/dashboard' element={<Dashboard />} /> */}
+        </Routes>
+      </Router>
     </div>
   );
 }
