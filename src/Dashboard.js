@@ -5,17 +5,7 @@ function Dashboard() {
   return (
     <div className='admin-dashboard correction'>
         <div className="admin-dashboard-container">
-            {/* <div className="admin-info">
-                <div className="admin-info-left">
-                    <img src={require('./images/hamster.png')} alt="" />
-                </div>
-                <div className="admin-info-right">
-                    <p>Admin</p>
-                    <h1>Gloria Borger</h1>
-                    <p>Email: <section>abc@abc.com</section></p>
-                    <button>Logout</button>
-                </div>
-            </div> */}
+            
             <div className="admin-table">
                 <div className="admin-table-container">
                     <div>
@@ -51,7 +41,9 @@ function Dashboard() {
                 </div>
             </div>
         </div>
+        <div>
       
+    </div>
     </div>
   )
 }
