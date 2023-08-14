@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from 'react'
 import './Dnav.css'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import {authUserInfoContext} from '../Context/MyContext'
 
 
 function Dnav({user}) {
-
+    const navigate = useNavigate();
     const {authUserInfo, setAuthUserInfo} = useContext(authUserInfoContext);
 
     useEffect(()=>{
@@ -60,11 +60,6 @@ function Dnav({user}) {
         document.getElementById('all-comments').style.display='none'
         document.getElementById('pending-comments').style.display='block'
     }
-
-    useEffect(()=>{
-        
-    })
-
 
     const updateUserData = async newName => {
         const user={
@@ -128,6 +123,7 @@ function Dnav({user}) {
         .then(data=>{
             console.log(data)
         })
+        navigate('/login')
         
     }
 
