@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import slugify from 'slugify';
 
 
+
+
 export default function MainBlog({allBlogs}) {
   
   // function calculateAverageRating(reviews) {

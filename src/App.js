@@ -1136,7 +1136,7 @@ return (
           <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
           <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
           <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
-          {/* <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={blogsArray} />} /> */}
+           <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={blogsArray} />} /> 
           {/* <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating} /> <Footer /></>} /> */}
           <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
           
