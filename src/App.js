@@ -1025,8 +1025,7 @@ function App() {
     const URLArr=URL.split('-')
     const blogId=URLArr[URLArr.length-1] 
 
-    console.log('Requested Details:', URL);
-    console.log('ID',blogId) 
+  
   
     return (
         <BlogPage
@@ -1090,26 +1089,31 @@ console.log(top3BlogsPerCategoryByRating);
 
 // //Fetching Data
  const [blogs, setBlogs] = useState([]);
-  
-// useEffect(()=>{
-//   axios.get('http://localhost:5000/getdata')
-//   .then(blogs=>setBlogs(blogs.data))
-//   .catch(err=>console.log(err))
-//   console.log(blogs);
-// },[])
 
 useEffect(() => {
-  fetch('http://localhost:5000/get-allblogs')
+  fetch('http://localhost:5000/get-allblogs', {
+    method:"GET",    
+  })
     .then(response => response.json())
-    .then(data => setBlogs(data))
-    .catch(error => console.log(error));
-
-    
-    
+    .then((data)=>{
+      console.log(data)
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+     
+      
 }, []);
 
 
-
+const blogsArray = blogs.map(blog => {
+  return {
+    id:blog.id,
+    title:blog.title,
+    content:blog.content,
+    category:blog.selectedCategory
+  };
+});
 
   return (
     <div className="app">

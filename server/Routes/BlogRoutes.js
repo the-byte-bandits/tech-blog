@@ -17,6 +17,7 @@ router.get('/get-allblogs', async (req, res) => {
   try {
     const blogs = await blogModel.find();
     res.json(blogs)
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
