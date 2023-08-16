@@ -8,36 +8,36 @@ import slugify from 'slugify';
 
 export default function MainBlog({allBlogs}) {
   
-  function calculateAverageRating(reviews) {
-    if (reviews.length === 0) return 0;
+  // function calculateAverageRating(reviews) {
+  //   if (reviews.length === 0) return 0;
     
-    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
-    return totalRating / reviews.length;
-  }
+  //   const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+  //   return totalRating / reviews.length;
+  // }
   
-  const findHighestRatedBlog=(blogs)=> {
-    let highestRating = 0;
-    let highestRatedBlog = null;
+  // const findHighestRatedBlog=(blogs)=> {
+  //   let highestRating = 0;
+  //   let highestRatedBlog = null;
   
-    for (const blog of blogs) {
-      const averageRating = calculateAverageRating(blog.reviews);
+  //   for (const blog of blogs) {
+  //     const averageRating = calculateAverageRating(blog.reviews);
   
-      if (averageRating > highestRating) {
-        highestRating = averageRating;
-        highestRatedBlog = blog;
-      }
-    }
+  //     if (averageRating > highestRating) {
+  //       highestRating = averageRating;
+  //       highestRatedBlog = blog;
+  //     }
+  //   }
   
-    return highestRatedBlog;
-  }
+  //   return highestRatedBlog;
+  // }
   
 
-  const hrb=findHighestRatedBlog(allBlogs)
+  // const hrb=findHighestRatedBlog(allBlogs)
 
   return (
     <main className="main">
         <div className="main-container">
-
+{/* 
             <div className="main-blog">
               <div className="main-blog-container">
                 <div className="main-blog-content">
@@ -49,7 +49,7 @@ export default function MainBlog({allBlogs}) {
                 </div>
                 <i class="fa-solid fa-arrow-right"></i>
               </div>
-            </div>
+            </div> */}
 
           <div className="blogs-all">
             <div className="blogs-all-container container">
