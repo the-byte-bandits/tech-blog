@@ -1,7 +1,5 @@
 import 'https://kit.fontawesome.com/9c1c3f6a2e.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Container from './adminComponents/Container/Container';
-// import Menu from './adminComponents/SideMenu/Menu';
 import { BrowserRouter as Router, Routes, Route, Link, useParams} from "react-router-dom";
 import AboutUs from './About';
 import ContactUs from './ContactUs';
@@ -23,13 +21,6 @@ import { useState,useEffect } from 'react';
 import axios from 'axios'; 
 
 function App() {
-
-  const user={
-    id:1,
-    name:"Gloria Borger",
-    email:"gloria@gmail.com",
-    password:"123456",
-  }
   
   const allBlogss=[
     {
@@ -1034,8 +1025,6 @@ function App() {
     );
   };
 
-
-
 function extractTop3BlogsPerCategoryByRating(allBlogs) {
   // Group blogs by category
   const blogsByCategory = {};
@@ -1081,32 +1070,6 @@ function calculateAverageRating(reviews) {
   return totalRating / reviews.length;
 }
 
-
-// //Fetching Data
- const [blogs, setBlogs] = useState([]);
-
-useEffect(() => {
-  fetch('http://localhost:5000/get-allblogs', {
-    method:"GET",    
-  })
-    .then(response => response.json())
-    .then((blog)=>{
-      setBlogs(blog)
-      console.log(blog)
-      
-      
-      
-     
-      
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-     
-      
-}, []);
-
-
 const blogsArray = blogs.map((blog, index) => ({ 
   id: blog.id,
   title:blog.title,
@@ -1125,9 +1088,7 @@ const blogsArray = blogs.map((blog, index) => ({
 
 return (
     <div className="app">
-
-
- <Router>
+      <Router>
         <ScrollToTop />
         <Routes>
           <Route path='/' element={<><Navbarr /><MainBlog allBlogs={blogsArray}/><Footer /></>}/>
@@ -1139,14 +1100,10 @@ return (
           <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
           <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
            <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={blogsArray} />} /> 
-          {/* <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating} /> <Footer /></>} /> */}
+          <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating} /> <Footer /></>} />
           <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
-          
-    
         </Routes>
       </Router>
-    
-
     </div>
   );
 }

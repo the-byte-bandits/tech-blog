@@ -48,14 +48,6 @@ async function loginController(req, res) {
 
             const authUser={email:email};
             const accessToken=JWT.sign(authUser,process.env.ACCESS_TOKEN_SECRET)
-
-            // res.cookie('access_token', accessToken, {
-            //     httpOnly: true,
-            //     secure: true, // Use in production over HTTPS
-            //     sameSite: 'strict',
-            //   });
-              
-            // res.send({accessToken:accessToken})
             res.status(200).json({name:user.name,email:user.email,accessToken:accessToken});
         }else{
             res.status(401).json({ error: 'Incorrect password' });

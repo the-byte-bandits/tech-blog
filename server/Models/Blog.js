@@ -17,14 +17,10 @@ const commentSchema = new mongoose.Schema({
 });
 
 const blogSchema = new mongoose.Schema({
-   id:Number,
+    id:Number,
     title: String,
     selectedCategory: String,
     content: String,
-    Base64:String,
-   author: String,
-    totViews: Number,
-    currViews: Number,
     date: String,
     coverImg: String,
     reviews: [reviewSchema],

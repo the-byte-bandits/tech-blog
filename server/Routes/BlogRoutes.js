@@ -13,6 +13,13 @@ const app= express();
 app.use(cors()); // Use the cors middleware
 app.use(express.json());
 // Define the route to get all blogs
+
+
+
+
+// #############################################
+//ye function proper array of objects return kare
+// #############################################
 router.get('/get-allblogs', async (req, res) => {
   try {
     const blogs = await blogModel.find();
@@ -25,9 +32,9 @@ router.get('/get-allblogs', async (req, res) => {
 });
 
 
-//write a Blog 
-
-
+// #############################################
+// payload wala issue resolve karo
+// #############################################
 router.post('/write-blog', async (req, res) => {
   console.log('POST - /write-blog')
   
@@ -54,8 +61,10 @@ router.post('/write-blog', async (req, res) => {
   
   
 });
-//Delete Blog  data
-// Define the route to delete a blog by its title
+
+
+
+
 router.delete('/delete-blog/:title', async (req, res) => {
   const titleToDelete = req.params.title;
 
@@ -72,6 +81,10 @@ router.delete('/delete-blog/:title', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+
+
+
 
 router.put('/update-blog/:title', async (req, res) => {
   const titleToUpdate = req.params.title;
