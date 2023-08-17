@@ -1,5 +1,7 @@
 import 'https://kit.fontawesome.com/9c1c3f6a2e.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import Container from './adminComponents/Container/Container';
+// import Menu from './adminComponents/SideMenu/Menu';
 import { BrowserRouter as Router, Routes, Route, Link, useParams} from "react-router-dom";
 import AboutUs from './About';
 import ContactUs from './ContactUs';
@@ -12,36 +14,22 @@ import Register from './Register';
 import BlogEditor from './BlogEditor';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
+// import Dashboard from './Dashboard';
 import TermsOfService from './TermsOfService';
 import Dashboardd from './Dashboard/Dashboardd';
 import Error from './404/Error';
 import TopCategory from './topCategory';
-
-import {authUserInfoContext} from './Context/MyContext';
-import { useEffect, useState } from 'react';
-
-import Cookies from 'js-cookie';
-
-
+import { useState,useEffect } from 'react';
+import axios from 'axios'; 
 
 function App() {
 
-  const [authUserInfo, setAuthUserInfo] = useState(null);
-  const [accessToken, setAccessToken] = useState('');
-
-  useEffect(() => {
-    let AT=Cookies.get('access_token');
-    if(AT){
-      setAccessToken(AT);
-    }
-
-    
-
-    
-  },[])
-
-  console.log('Access Token:', accessToken);
-
+  const user={
+    id:1,
+    name:"Gloria Borger",
+    email:"gloria@gmail.com",
+    password:"123456",
+  }
   
   const allBlogss=[
     {
@@ -1037,15 +1025,16 @@ function App() {
     const URLArr=URL.split('-')
     const blogId=URLArr[URLArr.length-1] 
 
-    console.log('Requested Details:', URL);
-    console.log('ID',blogId) 
+  
   
     return (
         <BlogPage
-          blog={allBlogss.find((blog) => blog.id == blogId)}
+         // blog={allBlogss.find((blog) => blog.id == blogId)}
         />
     );
   };
+
+
 
 function extractTop3BlogsPerCategoryByRating(allBlogs) {
   // Group blogs by category
@@ -1092,34 +1081,72 @@ function calculateAverageRating(reviews) {
   return totalRating / reviews.length;
 }
 
-// Call the function with the allBlogss array
-const top3BlogsPerCategoryByRating = extractTop3BlogsPerCategoryByRating(allBlogss);
 
-  return (
+// //Fetching Data
+ const [blogs, setBlogs] = useState([]);
+
+useEffect(() => {
+  fetch('http://localhost:5000/get-allblogs', {
+    method:"GET",    
+  })
+    .then(response => response.json())
+    .then((blog)=>{
+      setBlogs(blog)
+      console.log(blog)
+      
+      
+      
+     
+      
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+     
+      
+}, []);
+
+
+const blogsArray = blogs.map((blog, index) => ({ 
+  id: blog.id,
+  title:blog.title,
+  content:blog.content,
+  selectedCategory:blog.selectedCategory,
+  Base64:blog.Base64
+}));
+
+// //Call the function with the allBlogss array
+// const top3BlogsPerCategoryByRating = extractTop3BlogsPerCategoryByRating(blogsArray);
+
+// console.log(top3BlogsPerCategoryByRating);
+
+
+
+
+return (
     <div className="app">
-      <authUserInfoContext.Provider value={{ authUserInfo, setAuthUserInfo }}>
-        <Router>
-          <ScrollToTop />
-          <Routes>
-            <Route path='/' element={<><Navbarr /><MainBlog allBlogs={allBlogss}/><Footer /></>}/>
-            <Route path='/blog/*' element={<><Navbarr /><BlogPageWithDetails /><Footer /></>}/>
-            <Route path='/contact-us' element={<><Navbarr /><ContactUs /><Footer /></>} />
-            <Route path='/about-us' element={<><Navbarr /><AboutUs /><Footer /></>} />
-            <Route path='/terms-of-service' element={<><Navbarr /><TermsOfService /><Footer /></>} />
-            
-            
-            <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
-            {/* <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} /> */}
-            <Route path='/dashboard' element={<Dashboardd allBlogs={allBlogss} />} />
-            <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
-            <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
-            
 
-            <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating}    /> <Footer /></>} />
-            <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />          
-          </Routes>
-        </Router>
-      </authUserInfoContext.Provider>
+
+ <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path='/' element={<><Navbarr /><MainBlog allBlogs={blogsArray}/><Footer /></>}/>
+          <Route path='/blog/*' element={<><Navbarr /><BlogPageWithDetails /><Footer /></>}/>
+          <Route path='/contact-us' element={<><Navbarr /><ContactUs /><Footer /></>} />
+          <Route path='/about-us' element={<><Navbarr /><AboutUs /><Footer /></>} />
+          <Route path='/terms-of-service' element={<><Navbarr /><TermsOfService /><Footer /></>} />
+          <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
+          <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
+          <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
+           <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={blogsArray} />} /> 
+          {/* <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating} /> <Footer /></>} /> */}
+          <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
+          
+    
+        </Routes>
+      </Router>
+    
+
     </div>
   );
 }

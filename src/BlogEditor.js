@@ -17,24 +17,26 @@ import { convertLength } from '@mui/material/styles/cssUtils';
 export default function BlogEditor() {
   const editor = useRef(null);
 
+  
+
   const [selectedCategory, setSelectedCategory] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [image,setImage]=useState('');
+const [image,setImage]=useState('');
 
-  const convertToBase64=(e)=>{
-  console.log(e)
-  var reader=new FileReader();
-  reader.readAsDataURL(e.target.files[0])
-  reader.onload=()=>{
-    console.log(reader.result);
-    setImage(reader.result)
-  };
-  reader.onerror=error=>{
-    console.log("Error",error);
+const convertToBase64=(e)=>{
+console.log(e)
+var reader=new FileReader();
+reader.readAsDataURL(e.target.files[0])
+reader.onload=()=>{
+  console.log(reader.result);
+  setImage(reader.result)
+};
+reader.onerror=error=>{
+  console.log("Error",error);
 
-  };
-  }
+};
+}
 
 
   const handleDropdownSelect = (value) => {
@@ -43,41 +45,54 @@ export default function BlogEditor() {
     console.log("Selected :",selectedCategory);
 
   };
+
+  let currentId = 0;
+
   const handleButtonClick = () => {
-    console.log('Category:',selectedCategory);
-    console.log('Title:', title);
-    console.log('Content:', content);
-
-    const dataToSend = {
-        selectedCategory:selectedCategory,
-        title: title,
-        content: content,
-        Base64:image
-    };
-
-    fetch('http://localhost:5000/write-blog', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dataToSend)
+    // Fetch the last value from the MongoDB database
+    fetch('http://localhost:5000/get-last-id', {
+      method: 'GET'
     })
     .then(response => response.json())
     .then(data => {
+      // Update currentId with the next value
+      currentId = data.lastId+ 1;
+  console.log(currentId)
+      const dataToSend = {
+        id: currentId,
+        selectedCategory: selectedCategory,
+        title: title,
+        content: content,
+        Base64: image
+      };
+  
+      // Send data to the server
+      fetch('http://localhost:5000/write-blog', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+      })
+      .then(response => response.json())
+      .then(data => {
         console.log('Data sent successfully:', data);
+      })
+      .catch(error => {
+        console.error('Error sending data:', error);
+      });
+  
+      Swal.fire(
+        'Blog Data Added',
+        'New Blog Added',
+        'success'
+      );
     })
     .catch(error => {
-        console.error('Error sending data:', error);
+      console.error('Error fetching last ID:', error);
     });
-    Swal.fire(
-      'Blog Data Added',
-      'New Blog Added',
-      'success'
-    )
-
-
   };
-
+  
   const _onSelect = (option) => {
     console.log("Selected option:", option);
     // Do something with the selected option if needed

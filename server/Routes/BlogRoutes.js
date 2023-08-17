@@ -29,6 +29,8 @@ router.get('/get-allblogs', async (req, res) => {
 
 
 router.post('/write-blog', async (req, res) => {
+  console.log('POST - /write-blog')
+  
   const { selectedCategory, title, content,Base64 } = req.body;
   const BID=uuidv4();
   console.log(title)
