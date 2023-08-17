@@ -12,7 +12,7 @@ export default function Blog({blog}) {
   
   const convertToTruncatedPlainText = (html) => {
 
-    const numWords=40;
+    const numWords=20;
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
     const plainText = tempDiv.textContent || tempDiv.innerText || '';
@@ -65,8 +65,8 @@ export default function Blog({blog}) {
               </Link>
              
               <div className="blog-info">
-              <img src={`${blog.Base64}`} alt=""/>
-             <p>{blog.selectedCategory}</p>
+              <img src={require('./images/user-img.png')} alt=""/>
+             
                     <p>{convertToTruncatedPlainText(blog.content)}</p>
 
                     <i class="fa-solid fa-circle"></i>               
