@@ -37,7 +37,7 @@ router.post('/write-blog', async (req, res) => {
   console.log(content)
   console.log(id)
   if (!id||!title || !content || !selectedCategory||!Base64) {
-    return res.status(422).json({ error: "Please provide Blog Title, Content, and Category" });
+    return res.status(422).json({ error: "Please Fill All Fields including Blog Title, Content, and Category" });
   }
 
   try {
@@ -60,21 +60,9 @@ router.post('/write-blog', async (req, res) => {
   
 });
 
-// // Endpoint to get the last inserted ID
-// router.get('/get-last-id', async (req, res) => {
-//   try {
-//     const lastEntry = await BlogEntry.findOne().sort({ id: -1 }).exec();
-//     const lastId = lastEntry ? lastEntry.id : 0;
-//     res.json({ lastId });
-//   } catch (error) {
-//     console.error('Error fetching last ID:', error);
-//     res.status(500).json({ error: 'Failed to fetch last ID' });
-//   }
-// });
-
 router.get('/get-last-id', async (req, res) => {
   try {
-    const lastEntry = await BlogEntry.findOne().sort({ id: -1 }).exec();
+    const lastEntry = await blogModel.findOne().sort({ id: -1 }).exec();
     const lastId = lastEntry ? lastEntry.id : 0;
     res.json({ lastId });
   } catch (error) {

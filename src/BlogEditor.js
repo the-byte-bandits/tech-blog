@@ -16,20 +16,7 @@ import { convertLength } from '@mui/material/styles/cssUtils';
 
 export default function BlogEditor() {
   const editor = useRef(null);
-  
 
-
-  function createAutoIncrement() {
-    let id = 0;
-  
-    return function() {
-      id++;
-      return id;
-    };
-  }
-  
-  // Usage:
-  
   
 
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -106,48 +93,6 @@ reader.onerror=error=>{
     });
   };
   
-
-  // let currentId = 0;
-  // const handleButtonClick = () => {
-    
-    
-    
-    
-  //   const getNextId = currentId++; // Increment and then assign the current ID
-    
-
-  //   const dataToSend = {
-
-  //       id: getNextId,
-  //       selectedCategory:selectedCategory,      
-  //       title: title,
-  //       content: content,
-  //       Base64:image
-  //   };
-
-  //   fetch('http://localhost:5000/write-blog', {
-  //       method: 'POST',
-  //       headers: {
-  //           'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(dataToSend)
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //       console.log('Data sent successfully:', data);
-  //   })
-  //   .catch(error => {
-  //       console.error('Error sending data:', error);
-  //   });
-  //   Swal.fire(
-  //     'Blog Data Added',
-  //     'New Blog Added',
-  //     'success'
-  //   )
-
-
-  // };
-
   const _onSelect = (option) => {
     console.log("Selected option:", option);
     // Do something with the selected option if needed
