@@ -3,14 +3,16 @@ const blogModel = require("../Models/Blog");
 const mongoose = require('mongoose');
 const router = express.Router();
 const cors = require('cors'); // Import the cors package
-const { v4: uuidv4 } = require('uuid');
 
- 
+
 const app= express();
 
+app.use(cors());
 
-app.use(cors()); // Use the cors middleware
+
 app.use(express.json());
+
+
 // Define the route to get all blogs
 
 router.get('/get-allblogs', async (req, res) => {
@@ -29,14 +31,12 @@ router.get('/get-allblogs', async (req, res) => {
 
 
 router.post('/write-blog', async (req, res) => {
-  const { selectedCategory, title, content,Base64 } = req.body;
-  const BID=uuidv4();
+  const {id,selectedCategory, title, content,Base64 } = req.body;
   console.log(title)
   console.log(selectedCategory)
   console.log(content)
-  console.log(BID)
-  const id=BID;
-  if (!title || !content || !selectedCategory||!Base64) {
+  console.log(id)
+  if (!id||!title || !content || !selectedCategory||!Base64) {
     return res.status(422).json({ error: "Please provide Blog Title, Content, and Category" });
   }
 
@@ -59,6 +59,31 @@ router.post('/write-blog', async (req, res) => {
 
   
 });
+
+// // Endpoint to get the last inserted ID
+// router.get('/get-last-id', async (req, res) => {
+//   try {
+//     const lastEntry = await BlogEntry.findOne().sort({ id: -1 }).exec();
+//     const lastId = lastEntry ? lastEntry.id : 0;
+//     res.json({ lastId });
+//   } catch (error) {
+//     console.error('Error fetching last ID:', error);
+//     res.status(500).json({ error: 'Failed to fetch last ID' });
+//   }
+// });
+
+router.get('/get-last-id', async (req, res) => {
+  try {
+    const lastEntry = await BlogEntry.findOne().sort({ id: -1 }).exec();
+    const lastId = lastEntry ? lastEntry.id : 0;
+    res.json({ lastId });
+  } catch (error) {
+    console.error('Error fetching last ID:', error);
+    res.status(500).json({ error: 'Failed to fetch last ID' });
+  }
+});
+
+
 //Delete Blog  data
 // Define the route to delete a blog by its title
 router.delete('/delete-blog/:title', async (req, res) => {

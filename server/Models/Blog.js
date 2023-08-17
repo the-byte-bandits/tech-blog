@@ -17,7 +17,7 @@ const commentSchema = new mongoose.Schema({
 });
 
 const blogSchema = new mongoose.Schema({
-   id: {type: String, required: true},
+   id:Number,
     title: String,
     selectedCategory: String,
     content: String,
