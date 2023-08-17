@@ -21,14 +21,14 @@ const blogSchema = new mongoose.Schema({
     title: String,
     selectedCategory: String,
     content: String,
-    Base64:String
-   // author: String,
-    //totViews: Number,
-    //currViews: Number,
-    //date: String,
-    //coverImg: String,
-    //reviews: [reviewSchema],
-    //comments: [commentSchema]
+    Base64:String,
+   author: String,
+    totViews: Number,
+    currViews: Number,
+    date: String,
+    coverImg: String,
+    reviews: [reviewSchema],
+    comments: [commentSchema]
 
 });
 

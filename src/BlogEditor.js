@@ -16,27 +16,25 @@ import { convertLength } from '@mui/material/styles/cssUtils';
 
 export default function BlogEditor() {
   const editor = useRef(null);
-  
-
 
   const [selectedCategory, setSelectedCategory] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-const [image,setImage]=useState('');
+  const [image,setImage]=useState('');
 
-const convertToBase64=(e)=>{
-console.log(e)
-var reader=new FileReader();
-reader.readAsDataURL(e.target.files[0])
-reader.onload=()=>{
-  console.log(reader.result);
-  setImage(reader.result)
-};
-reader.onerror=error=>{
-  console.log("Error",error);
+  const convertToBase64=(e)=>{
+  console.log(e)
+  var reader=new FileReader();
+  reader.readAsDataURL(e.target.files[0])
+  reader.onload=()=>{
+    console.log(reader.result);
+    setImage(reader.result)
+  };
+  reader.onerror=error=>{
+    console.log("Error",error);
 
-};
-}
+  };
+  }
 
 
   const handleDropdownSelect = (value) => {
@@ -57,7 +55,7 @@ reader.onerror=error=>{
         Base64:image
     };
 
-    fetch('http://localhost:3000/write-blog', {
+    fetch('http://localhost:5000/write-blog', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

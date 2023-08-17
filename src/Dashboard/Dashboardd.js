@@ -8,12 +8,12 @@
 
     const [blogs, setBlogs] = useState([]);
   
-  useEffect(()=>{
-    axios.get('http://localhost:5000/getdata')
-    .then(blogs=>setBlogs(blogs.data))
-    .catch(err=>console.log(err))
-    console.log(blogs);
-  },[])
+    useEffect(()=>{
+      axios.get('http://localhost:5000/getdata')
+      .then(blogs=>setBlogs(blogs.data))
+      .catch(err=>console.log(err))
+      console.log(blogs);
+    },[])
   
     
     
