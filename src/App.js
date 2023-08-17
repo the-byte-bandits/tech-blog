@@ -18,21 +18,30 @@ import Error from './404/Error';
 import TopCategory from './topCategory';
 
 import {authUserInfoContext} from './Context/MyContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import Cookies from 'js-cookie';
+
 
 
 function App() {
 
   const [authUserInfo, setAuthUserInfo] = useState(null);
-  
+  const [accessToken, setAccessToken] = useState('');
 
+  useEffect(() => {
+    let AT=Cookies.get('access_token');
+    if(AT){
+      setAccessToken(AT);
+    }
 
-  const user={
-    id:1,
-    name:"Gloria Borger",
-    email:"gloria@gmail.com",
-    password:"123456",
-  }
+    
+
+    
+  },[])
+
+  console.log('Access Token:', accessToken);
+
   
   const allBlogss=[
     {
@@ -1038,8 +1047,6 @@ function App() {
     );
   };
 
-
-
 function extractTop3BlogsPerCategoryByRating(allBlogs) {
   // Group blogs by category
   const blogsByCategory = {};
@@ -1100,14 +1107,14 @@ const top3BlogsPerCategoryByRating = extractTop3BlogsPerCategoryByRating(allBlog
             <Route path='/about-us' element={<><Navbarr /><AboutUs /><Footer /></>} />
             <Route path='/terms-of-service' element={<><Navbarr /><TermsOfService /><Footer /></>} />
             
-            <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
-            {
-              authUserInfo &&  
-              <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} />
-            }
             
+            <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
+            {/* <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={allBlogss} />} /> */}
+            <Route path='/dashboard' element={<Dashboardd allBlogs={allBlogss} />} />
             <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
             <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
+            
+
             <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating}    /> <Footer /></>} />
             <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />          
           </Routes>

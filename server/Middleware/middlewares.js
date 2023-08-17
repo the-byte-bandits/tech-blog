@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 
 function checkAuth(req, res, next) {
   const token=req.headers['authorization'].split(' ')[1];
-
   console.log(req.headers);
 
   if (!token) {

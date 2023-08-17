@@ -1,17 +1,26 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
 import { authUserInfoContext } from './Context/MyContext';
+import Cookies from 'js-cookie';
+import { set } from 'mongoose';
 
 function Login() {
   const navigate = useNavigate();
-  const [responseReceived, setResponseReceived] = useState(false);
 
   const {authUserInfo, setAuthUserInfo} = useContext(authUserInfoContext);
+  const [accessToken, setAccessToken] = useState(null);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (authUserInfo) {
+      navigate('/dashboard');
+    }
+  }, [authUserInfo]);
+
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -36,10 +45,14 @@ function Login() {
 
         setAuthUserInfo(responseData);
 
+        console.log('>>->>',authUserInfo);
+
+
         setEmail('');
         setPassword('');
 
-        setResponseReceived(true);
+        Cookies.set('access_token',responseData.accessToken,{expires:1})
+        setAccessToken(responseData.accessToken);
         navigate('/dashboard');
       } else {
         const responseData = await response.json();
