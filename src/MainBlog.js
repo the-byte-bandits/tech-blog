@@ -5,12 +5,12 @@ import { hi } from 'date-fns/locale'
 import { Link } from 'react-router-dom'
 import slugify from 'slugify';
 
-
-
-
 export default function MainBlog({allBlogs}) {
+
+
+
   
-  // function calculateAverageRating(reviews) {
+  // function calculateAverageRating(reviews) { 
   //   if (reviews.length === 0) return 0;
     
   //   const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
@@ -58,7 +58,7 @@ export default function MainBlog({allBlogs}) {
               <h1>Recent blog posts</h1>
 
               <div className="blogs-all-row row">
-                {allBlogs.map((blog)=> <Blog key={blog.id} blog={blog} /> )}
+                {allBlogs.map((blog)=> <Blog key={blog.id} blog={blog}/> )}
               </div>
               {/* <div className="ad-1"><p>Ads*</p></div> */}
 

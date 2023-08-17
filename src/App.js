@@ -1110,7 +1110,9 @@ useEffect(() => {
 const blogsArray = blogs.map((blog, index) => ({ 
   id: blog.id,
   title:blog.title,
-  content:blog.content
+  content:blog.content,
+  selectedCategory:blog.selectedCategory,
+  Base64:blog.Base64
 }));
 
 // //Call the function with the allBlogss array
