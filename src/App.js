@@ -21,6 +21,14 @@ import { useState,useEffect } from 'react';
 import axios from 'axios'; 
 
 function App() {
+
+    const user={
+    id:1,
+    name:"Gloria Borger",
+    email:"gloria@gmail.com",
+    password:"123456",
+  }
+  
   
   const allBlogss=[
     {
@@ -1070,6 +1078,31 @@ function calculateAverageRating(reviews) {
   return totalRating / reviews.length;
 }
 
+
+// //Fetching Data
+const [blogs, setBlogs] = useState([]);
+
+useEffect(() => {
+   fetch('http://localhost:5000/get-allblogs', {
+    method:"GET",    
+  })
+    .then(response => response.json())
+    .then((blog)=>{
+      setBlogs(blog)
+      console.log(blog)  
+      
+      
+     
+      
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+     
+      
+}, []);
+
+
 const blogsArray = blogs.map((blog, index) => ({ 
   id: blog.id,
   title:blog.title,
@@ -1083,15 +1116,12 @@ const blogsArray = blogs.map((blog, index) => ({
 
 // console.log(top3BlogsPerCategoryByRating);
 
-
-
-
 return (
     <div className="app">
       <Router>
         <ScrollToTop />
         <Routes>
-          <Route path='/' element={<><Navbarr /><MainBlog allBlogs={blogsArray}/><Footer /></>}/>
+           {/* <Route path='/' element={<><Navbarr /><MainBlog allBlogs={blogsArray}/><Footer /></>}/> */}
           <Route path='/blog/*' element={<><Navbarr /><BlogPageWithDetails /><Footer /></>}/>
           <Route path='/contact-us' element={<><Navbarr /><ContactUs /><Footer /></>} />
           <Route path='/about-us' element={<><Navbarr /><AboutUs /><Footer /></>} />
@@ -1099,8 +1129,8 @@ return (
           <Route path='/login' element={<><Navbarr /><Login /><Footer /></>} />
           <Route path='/register' element={<><Navbarr /><Register /><Footer /></>} />
           <Route path='/write-blog' element={<><Navbarr /><BlogEditor /><Footer /></>} />
-           <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={blogsArray} />} /> 
-          <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating} /> <Footer /></>} />
+           {/* <Route path='/dashboard' element={<Dashboardd user={user} allBlogs={blogsArray} />} />  */}
+          {/* <Route path='/trending' element={<><Navbarr /> <TopCategory top3BlogsPerCategoryByRating={top3BlogsPerCategoryByRating} /> <Footer /></>} /> */}
           <Route path='/*' element={<><Navbarr /><Error /><Footer /></>} />
         </Routes>
       </Router>

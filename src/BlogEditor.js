@@ -57,7 +57,7 @@ reader.onerror=error=>{
     .then(data => {
       // Update currentId with the next value
       currentId = data.lastId+ 1;
-  console.log(currentId)
+      console.log(currentId)
       const dataToSend = {
         id: currentId,
         selectedCategory: selectedCategory,
