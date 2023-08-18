@@ -3,7 +3,8 @@ const blogModel = require("../Models/Blog");
 const mongoose = require('mongoose');
 const router = express.Router();
 const cors = require('cors'); // Import the cors package
-
+const fileUpload = require('express-fileupload');
+const path = require("path");
 const app = express();
 
 
@@ -11,28 +12,37 @@ app.use(cors()); // Use the cors middleware
 app.use(express.json());
 
 
+// app.use(fileUpload({
+//   limits: { fileSize: 100 * 1024 * 1024 }, // 100MB limit
+// }));
 
+// app.use(
+//   fileUpload()
+// );
+
+
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}));
 // route to get all blogs
 
 
 
 //The  code is returning the fetched data as an array of objects . 
 
-
-
 router.get('/get-allblogs', async (req, res) => {
   try {
     const blogs = await blogModel.find();
-    res.json(blogs);
+    const blogsArray = blogs.map(blog => blog.toObject()); // Convert each blog to a plain object
+    res.json(blogsArray);
 
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
 
   }
-
-
 });
+
 
 
 router.post('/write-blog', async (req, res) => {
@@ -64,25 +74,6 @@ router.post('/write-blog', async (req, res) => {
 
 
 
-
-// router.delete('/delete-blog/:title', async (req, res) => {
-//   const titleToDelete = req.params.title;
-
-//   try {
-//     const deletedBlog = await blogModel.findOneAndDelete({ title: titleToDelete });
-
-//     if (!deletedBlog) {
-//       return res.status(404).json({ message: 'Blog not found' });
-//     }
-
-//     res.json({ message: 'Blog deleted successfully', deletedBlog });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// });
-
-
 router.delete('/delete-blog/:id', async (req, res) => {
 
   const idToDelete = req.params.id;
@@ -101,29 +92,6 @@ router.delete('/delete-blog/:id', async (req, res) => {
   }
 });
 
-
-
-// router.put('/update-blog/:title', async (req, res) => {
-//   const titleToUpdate = req.params.title;
-//   const updateData = req.body; // The updated data for the blog
-
-//   try {
-//     const updatedBlog = await blogModel.findOneAndUpdate(
-//       { title: titleToUpdate },
-//       updateData,
-//       { new: true }
-//     );
-
-//     if (!updatedBlog) {
-//       return res.status(404).json({ message: 'Blog not found' });
-//     }
-
-//     res.json({ message: 'Blog updated successfully', updatedBlog });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// });
 
 router.put('/update-blog/:id', async (req, res) => {
   const idToUpdate = req.params.id;

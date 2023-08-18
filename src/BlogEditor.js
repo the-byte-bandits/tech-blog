@@ -143,8 +143,11 @@ reader.onerror=error=>{
         {/* Image upload */}
         <div>
   <input
-    accept="image/*"
-    type="file"
+    accept=".jpeg,.jpg,.png"
+    type="file" 
+    label="Image"
+    name="Image"
+    id="File_Upload"
     onChange={convertToBase64}
   />
 
